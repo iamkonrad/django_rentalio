@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rentals',
 
     'django_countries',
+    'import_export',
 ]
 
 MIDDLEWARE = [
