@@ -1,4 +1,3 @@
-from datetime import timedelta
 from django.db import models
 from books.models import Book
 from customers.models import Customer
@@ -24,7 +23,7 @@ class Rental(models.Model):
     updated_at= models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.ISBN} rented by{self.customer.username}"
+        return f"{self.book.ISBN} rented by{self.customer.username}"
 
     def save(self,*args,**kwargs):
         if not self.rent_end_date:
