@@ -2,13 +2,7 @@ from django.db import models
 from books.models import Book
 from customers.models import Customer
 from datetime import timedelta
-
-STATUS_CHOICES = (
-    ('#0','rented'),
-    ('#1', 'returned'),
-    ('#2', 'lost'),
-    ('#3', 'delayed'),
-)
+from .choices import STATUS_CHOICES
 class Rental(models.Model):
     #FK
     book = models.ForeignKey(Book,on_delete=models.CASCADE)
@@ -29,5 +23,8 @@ class Rental(models.Model):
         if not self.rent_end_date:
             self.rent_end_date=self.rent_start_date+timedelta(days=14)
         super().save(*args,**kwargs)
+
+    class Meta:
+        ordering =('-created_at',)
 
 
