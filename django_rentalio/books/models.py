@@ -4,6 +4,7 @@ from publishers.models import Publisher
 from authors.models import Author
 from django.utils.text import slugify
 import qrcode
+from django.urls import reverse
 from io import BytesIO
 from django.core.files import File
 from PIL import Image
@@ -22,6 +23,9 @@ class BookTitle(models.Model):
     @property
     def books(self):
         return self.book_set.all()
+
+    def get_absolute_url(self):
+        return reverse("books:detail",kwargs={"pk":self.pk})
 
     def __str__(self):
         return f"Book position:{self.title}"
