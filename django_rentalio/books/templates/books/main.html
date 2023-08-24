@@ -3,8 +3,14 @@
 {% block title %}book title list{% endblock title %}
 
 {% block content %}
-    <ul>Book title list</ul>
+    <h1>Book title list</h1>
 
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+
+    <button type="submit" class="p-3 bg-blue-500 text-white">Submit</button>
+    </form>
     {% if qs %}
         <ul>
             {% for el in qs %}
