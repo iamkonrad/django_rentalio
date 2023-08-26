@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import BookTitle, Book
-from django.views.generic import ListView, FormView,DetailView
+from django.views.generic import ListView, FormView,DetailView, DeleteView
 from .forms import BookTitleForm
 from django.urls import reverse,reverse_lazy
 from django.contrib import messages
@@ -60,3 +60,18 @@ class BookDetailView(DetailView):
         id = self.kwargs.get('book_id')
         obj=get_object_or_404(Book,ISBN=id)
         return obj
+
+class BookDeleteView(DeleteView):
+    model=Book
+    template_name = 'books/confirm_delete.html'
+
+    def get_object(self):
+        id = self.kwargs.get('book_id')
+        obj = get_object_or_404(Book, ISBN=id)
+        return obj
+
+    def get_success_url(self):
+        messages.add_message(self.request,messages.INFO,f"The book with isbn{self.get_object().ISBN} has been removed.")
+        letter=self.kwargs.get('letter')
+        slug=self.kwargs.get('slug')
+        return reverse('books:detail',kwargs={'letter':letter,'slug':slug})

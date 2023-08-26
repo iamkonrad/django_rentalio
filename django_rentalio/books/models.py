@@ -42,13 +42,18 @@ class Book(models.Model):
     title = models.ForeignKey(BookTitle,on_delete=models.CASCADE)
     ISBN=models.CharField(max_length=50,blank=True)
 
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
     qr_code=models.ImageField(upload_to='qr_codes',blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
         letter = self.title.title[:1].lower()
-        return reverse("books:detail-book",kwargs={"letter":letter, "slug":self.title.slug,"isbn":self.ISBN})
+        return reverse("books:detail-book", kwargs={"letter": letter, "slug": self.title.slug, "book_id": self.id})
+
+    def delete_objects(self):
+        letter = self.title.title[:1].lower()
+        return reverse('books:delete-book',kwargs={'letter':letter,'slug':self.title.slug,"book_id": self.id})
 
 
     def __str__(self):

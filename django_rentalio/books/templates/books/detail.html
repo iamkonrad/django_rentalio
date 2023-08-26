@@ -4,6 +4,15 @@
 {% block title %}book title detail{% endblock title %}
 
 {% block content %}
+    {% if messages %}
+        {% for messages in messages %}
+            {% if 'info' in messages.tags %}
+                {% include 'components/alert.html' with is_info=True title="Success" body=message %}
+            {% elif 'error' in messages.tags %}
+                {% include 'components/alert.html' with is_info=False title="Error" body=message %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 
     {% include 'components/header.html' with title=object.title description='book title details' is_go_back=True %}
 
@@ -55,14 +64,14 @@
                     {{obj.status}}
                 </td>
                 <td class="py-4 px-6">
+
+                </td>
+                <td class="py-4 px-6">
                     <a href="{{obj.get_absolute_url}}">click here</a>
 
                 </td>
                 <td class="py-4 px-6">
-
-
-                </td>
-                <td class="py-4 px-6">
+                    <a href="{{obj.delete_object}}">delete</a>
 
                 </td>
             </tr>
