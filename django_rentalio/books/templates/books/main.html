@@ -3,18 +3,18 @@
 {% block title %}book title list{% endblock title %}
 
 {% block content %}
-    <h1>Book title list</h1>
 
     {% if messages %}
         {% for messages in messages %}
             {% if 'info' in messages.tags %}
-                {{ message }}
+                {% include 'components/alert.html' with is_info=True title="Success" body=message %}
             {% elif 'error' in messages.tags %}
-                {{ message }}
+                {% include 'components/alert.html' with is_info=False title="Error" body=message %}
             {% endif %}
         {% endfor %}
     {% endif %}
 
+    {% include 'components/header.html' with title="Book titles" description="List of all the book titles available" %}
     <form action="" method="POST">
         {% csrf_token %}
 
