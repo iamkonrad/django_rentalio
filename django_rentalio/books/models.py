@@ -26,7 +26,8 @@ class BookTitle(models.Model):
         return self.book_set.all()
 
     def get_absolute_url(self):
-        return reverse("books:detail",kwargs={"pk":self.pk})
+        letter = self.title[:1].lower()
+        return reverse("books:detail",kwargs={"letter":letter, "slug":self.slug})
 
     def __str__(self):
         return f"Book position:{self.title}"

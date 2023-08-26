@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import BookTitle
-from django.views.generic import ListView, FormView
+from .models import BookTitle, Book
+from django.views.generic import ListView, FormView,DetailView
 from .forms import BookTitleForm
 from django.urls import reverse,reverse_lazy
 from django.contrib import messages
@@ -41,7 +41,12 @@ class BookTitleListView(FormView, ListView):
         messages.add_message(self.request,messages.ERROR, form.errors)
         return super().form_invalid(form)
 
-def book_title_detail_view(request,**kwargs):
-    pk=kwargs.get('pk')
-    obj=BookTitle.objects.get(pk=pk)
-    return render(request,'books/detail.html',{'obj':obj})
+#def book_title_detail_view(request,**kwargs):
+#    slug=kwargs.get('slug')
+#    obj=BookTitle.objects.get(slug=slug)
+#    return render(request,'books/detail.html',{'obj':obj})
+
+
+class BookTitleDetailView(DetailView):
+    model = BookTitle
+    template_name = 'books/detail.html'
