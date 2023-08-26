@@ -10,12 +10,14 @@ def change_theme(request):
     else:
         request.session['is_dark_mode'] = True
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 def home_view(request):
-    qs=Customer.objects.all()
-    obj=Book.objects.get(id=1)
+    qs = Customer.objects.all()
+
+    obj = Book.objects.filter(id=1).first()
 
     context = {
-        'qs':qs,
-        'obj':obj,
+        'qs': qs,
+        'obj': obj,
     }
     return render(request, 'main.html', context)

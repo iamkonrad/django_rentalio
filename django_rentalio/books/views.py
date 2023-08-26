@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import BookTitle, Book
 from django.views.generic import ListView, FormView,DetailView
 from .forms import BookTitleForm
@@ -50,3 +50,13 @@ class BookTitleListView(FormView, ListView):
 class BookTitleDetailView(DetailView):
     model = BookTitle
     template_name = 'books/detail.html'
+
+
+class BookDetailView(DetailView):
+    model=Book
+    template_name = 'books/detail_book.html'
+
+    def get_object(self):
+        id = self.kwargs.get('book_id')
+        obj=get_object_or_404(Book,ISBN=id)
+        return obj
