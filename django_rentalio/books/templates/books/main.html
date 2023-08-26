@@ -15,6 +15,10 @@
     {% endif %}
 
     {% include 'components/header.html' with title="Book titles" description="List of all the book titles available" %}
+
+    {% for letter in letters %}
+        <a href="{% url 'books:main' letter|lower %}" class="{% if letter == selected_letter|upper%}underline{% endif %}">{{ letter }}</a>
+    {% endfor %}
     <form action="" method="POST">
         {% csrf_token %}
 
@@ -48,6 +52,8 @@
                 <li><a href="{{el.get_absolute_url}}">{{el.title}}</a></li>
             {% endfor %}
         </ul>
+        {% else %}
+            No book titles starting with <b>{{selected_letter}}</b>
         {% endif %}
 
 {% endblock content %}

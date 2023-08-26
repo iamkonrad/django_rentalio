@@ -791,14 +791,6 @@ select {
   grid-column: span 1 / span 1;
 }
 
-.col-span-11 {
-  grid-column: span 11 / span 11;
-}
-
-.col-span-12 {
-  grid-column: span 12 / span 12;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1099,6 +1091,10 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .drop-shadow-md {
