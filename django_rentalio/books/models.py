@@ -66,6 +66,14 @@ class Book(models.Model):
             return statuses[self.rental_set.first().status]
         return False
 
+    @property
+    def is_available(self):
+        if len(self.rental_set.all()) >0:
+            status=self.rental_set.first().status
+            return True if status == '#1' else False
+        return True
+
+
     def save(self,*args,**kwargs):
         if not self.ISBN:
             self.ISBN= str(uuid.uuid4()).replace('-','')[:24].lower()
