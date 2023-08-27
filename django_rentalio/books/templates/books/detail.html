@@ -61,7 +61,7 @@
                     <img src="{{obj.qr_code.url}}" alt="{{obj.ISBN}}" class="h-12 w-12 rounded">
                 </td>
                 <td class="py-4 px-6">
-                    {{obj.status}}
+                    {% if obj.status %}{{obj.status}}{% else %}never rented out{% endif %}
                 </td>
                 <td class="py-4 px-6">
                     {% if obj.is_available %}
