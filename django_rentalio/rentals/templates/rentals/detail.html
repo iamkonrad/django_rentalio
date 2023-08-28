@@ -5,5 +5,83 @@ rental history
 {% endblock title %}
 
 {% block content %}
-rental history
+{% include 'components/header.html' with title=object.book.title.title discription=object.book.title.publisher.name %}
+
+{%  if object %}
+    {% if object_list %}
+                 <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="border">
+                        <th scope="col" class="py-3 px-6">
+                            #
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            customer
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            isbn
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            status
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            start
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            end
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            return
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            is closed
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in object_list %}
+                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td scope="row" class="py-4 px-6 font-medium text-gray-900 dark:text-white">
+                            {{forloop.counter}}
+                        </td>
+                        <td class="py-4 px-6">
+                            {{obj.customer.username}}
+                        </td>
+                        <td class="py-4 px-6">
+                            {{obj.book.ISBN}}
+                        </td>
+                        <td class="py-4 px-6">
+                            {{obj.status}}
+                        </td>
+                        <td class="py-4 px-6">
+                            {{obj.rent_start_date}}
+                        </td>
+                        <td class="py-4 px-6">
+                            {{obj.rent_start_date}}
+                        </td>
+                        <td class="py-4 px-6">
+                            {% if obj.return_date %}{{obj.return_date}}{% else %}-{% endif %}
+                        </td>
+                        <td class="py-4 px-6">
+                            {% if obj.is_closed %}
+                                <i class="fa-solid fa-check fa-lg text-teal-300"></i>
+                            {% else %}
+                                <i class="fa-solid fa-xmark fa-lg text-red-500"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+
+
+    {% endif %}
+{%  else %}
+    no data
+{% endif %}
+
+
 {% endblock content %}
