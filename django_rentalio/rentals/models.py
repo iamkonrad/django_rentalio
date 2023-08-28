@@ -19,6 +19,11 @@ class Rental(models.Model):
     def __str__(self):
         return f"{self.book.ISBN} rented by{self.customer.username}"
 
+    @property
+    def status_text(self):
+        statuses=dict(STATUS_CHOICES)
+        return statuses[self.status]
+
     def save(self,*args,**kwargs):
         if not self.rent_end_date:
             self.rent_end_date=self.rent_start_date+timedelta(days=14)
