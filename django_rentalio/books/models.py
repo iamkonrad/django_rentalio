@@ -9,6 +9,7 @@ from io import BytesIO
 from django.core.files import File
 from PIL import Image
 from rentals.choices import STATUS_CHOICES
+from .utils import hash_book_info
 
 
 class BookTitle(models.Model):
@@ -76,7 +77,7 @@ class Book(models.Model):
 
     def save(self,*args,**kwargs):
         if not self.ISBN:
-            self.ISBN= str(uuid.uuid4()).replace('-','')[:24].lower()
+            self.ISBN= hash_book_info(self.title.title,self.title.publisher.name)
 
             qrcode_img=qrcode.make(self.ISBN)                                                                           #QR_CODE FUNCTIONALITY
             canvas = Image.new('RGB', (qrcode_img.pixel_size,qrcode_img.pixel_size), 'white')                           #qr code display canvas

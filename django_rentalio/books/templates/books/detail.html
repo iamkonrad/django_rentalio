@@ -16,71 +16,79 @@
 
     {% include 'components/header.html' with title=object.title description='book title details' is_go_back=True %}
 
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
-            <tr class="border">
-                <th scope="col" class="py-3 px-6">
-                    #
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    title
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    book id
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    qr code
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    status
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    available
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    select
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    delete
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for obj in object.books %}
-            <tr class="border-b dark:bg-gray-800 dark:border-gray-700 {% if not obj.is_read  %}font-bold{% endif %}">
-                <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{forloop.counter}}
-                </td>
-                <td class="py-4 px-6">
-                    {{obj.title.title}}
-                </td>
-                <td class="py-4 px-6">
-                    {{obj.ISBN}}
-                </td>
-                <td class="py-4 px-6">
-                    <img src="{{obj.qr_code.url}}" alt="{{obj.ISBN}}" class="h-12 w-12 rounded">
-                </td>
-                <td class="py-4 px-6">
-                    {% if obj.status %}{{obj.status}}{% else %}never rented out{% endif %}
-                </td>
-                <td class="py-4 px-6">
-                    {% if obj.is_available %}
-                       <i class="fa-solid fa-check text-green 500"></i>
-                    {% else %}
-                        <i class="fa-solid fa-xmark text-red-500"></i>
-                    {% endif %}
-                </td>
-                <td class="py-4 px-6">
-                    {% include 'components/buttons/select_button.html' with href=obj.get_absolute_url %}
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+                <tr class="border">
+                    <th scope="col" class="py-3 px-6">
+                        #
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        title
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        book id
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        ISBN
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        qr code
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        status
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        available
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        select
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in object.books %}
+                <tr class="border-b dark:bg-gray-800 dark:border-gray-700 {% if not obj.is_read  %}font-bold{% endif %}">
+                    <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{forloop.counter}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{obj.title.title}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{obj.id}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{obj.ISBN}}
+                    </td>
+                    <td class="py-4 px-6">
+                        <img src="{{obj.qr_code.url}}" alt="{{obj.ISBN}}" class="h-12 w-12 rounded">
+                    </td>
+                    <td class="py-4 px-6">
+                        {% if obj.status %}{{obj.status}}{% else %}never rented out{% endif %}
+                    </td>
+                    <td class="py-4 px-6">
+                        {% if obj.is_available %}
+                           <i class="fa-solid fa-check text-green 500"></i>
+                        {% else %}
+                            <i class="fa-solid fa-xmark text-red-500"></i>
+                        {% endif %}
+                    </td>
+                    <td class="py-4 px-6">
+                        {% include 'components/buttons/select_button.html' with href=obj.get_absolute_url %}
 
-                </td>
-                <td class="py-4 px-6">
-                    {% include 'components/buttons/delete_button.html' with href=obj.delete_object %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                    </td>
+                    <td class="py-4 px-6">
+                        {% include 'components/buttons/delete_button.html' with href=obj.delete_object %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     {% if is_paginated %}
         <div class="mt-3">

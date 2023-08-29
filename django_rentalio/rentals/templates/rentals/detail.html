@@ -5,7 +5,7 @@ rental history
 {% endblock title %}
 
 {% block content %}
-{% include 'components/header.html' with title=object.book.title.title discription=object.book.title.publisher.name %}
+{% include 'components/header.html' with title=object.title.title discription=object.title.publisher.name %}
 
 {%  if object %}
     {% if object_list %}
@@ -20,6 +20,9 @@ rental history
                             customer
                         </th>
                         <th scope="col" class="py-3 px-6">
+                            id
+                        </th>
+                           <th scope="col" class="py-3 px-6">
                             isbn
                         </th>
                         <th scope="col" class="py-3 px-6">
@@ -50,6 +53,9 @@ rental history
                             {{obj.customer.username}}
                         </td>
                         <td class="py-4 px-6">
+                            {{obj.book.id}}
+                        </td>
+                       <td class="py-4 px-6">
                             {{obj.book.ISBN}}
                         </td>
                         <td class="py-4 px-6">
@@ -77,10 +83,11 @@ rental history
             </table>
             </div>
 
-
+    {% else %}
+        no rental-related data
     {% endif %}
 {%  else %}
-    no data
+    no book-related data
 {% endif %}
 
 
