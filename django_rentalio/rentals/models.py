@@ -15,6 +15,8 @@ class Rental(models.Model):
     rental_status_is_closed=models.BooleanField(default=False)                                                          #returned or lost (will change it to true)
     created_at= models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
+    is_closed = models.BooleanField(default=False)
+
 
     def __str__(self):
         return f"{self.book.ISBN} rented by{self.customer.username}"
