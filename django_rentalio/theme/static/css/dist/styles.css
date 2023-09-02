@@ -1553,6 +1553,11 @@ select {
   color: rgb(226 232 240 / var(--tw-text-opacity));
 }
 
+:is(.dark .dark\:text-slate-300) {
+  --tw-text-opacity: 1;
+  color: rgb(203 213 225 / var(--tw-text-opacity));
+}
+
 :is(.dark .dark\:text-slate-900) {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));

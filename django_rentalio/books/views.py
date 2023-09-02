@@ -58,7 +58,7 @@ class BookDetailView(DetailView):
 
     def get_object(self):
         id = self.kwargs.get('book_id')
-        obj=get_object_or_404(Book,ISBN=id)
+        obj=get_object_or_404(Book,id=id)
         return obj
 
 class BookDeleteView(DeleteView):

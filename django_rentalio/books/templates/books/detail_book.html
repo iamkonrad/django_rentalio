@@ -13,7 +13,7 @@
         <div>
             <div class="text-center mb-3">
                 {% if object.is_available %}
-                    available:
+                    <a href="{% url 'rentals:new' object.id %}" class="p-3 bg-sky-500 hover:bg-sky-600 rounded-lg text-white">rent</a>
                     {% if object.status %}
                         {{object.status}}
                     {% else %}
@@ -26,9 +26,9 @@
         <img src="{{object.qr_code.url}}" alt="{{object.isbn}}" class="w-52 h-52 rounded-lg">
             <div class="mt-7 text-center">
                 {%  if not object.is_available %}
-                    <a href="" class="bg-yellow-500 hover:bg-yellow-600 text-white dark:text-slate-900 rounded p-3">change status</a>
+                    <a href="{% url 'rentals:update' object.id object.rental_id %}" class="bg-yellow-500 hover:bg-yellow-600 text-white dark:text-slate-900 rounded p-3">change status</a>
                 {% endif %}
-                    <a href="" class="bg-rose-500 hover:bg-rose-600 rounded p-3 text-white">order history</a>
+                    <a href="{% url 'rentals:detail' object.id%} %}" class="bg-rose-500 hover:bg-rose-600 rounded p-3 text-white">order history</a>
             </div>
         </div>
     </div>
