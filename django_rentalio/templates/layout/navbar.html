@@ -5,22 +5,24 @@
             </div>
 
             <div class="flex items-center">
-                <div class="relative" id="dropdown-box"></div>
-                    <button id="menu-dropdown" class="bg-white-g-opacity-10 rounded-drop-shadow-lg p-3 hover:opacity-80 focus:ring-4 focus:ring-blug-300" type="button">menu &nbsp; <i class="fa-solid fa-caret-down"></i></button>
+                <div class="relative" id="dropdown-box">
+                    <button id="btn-dropdown" class="bg-white bg-opacity-10 rounded drop-shadow-lg p-3 hover:opacity-80 focus:ring-4 focus:ring-blue-300" type="button">menu &nbsp; <i class="fa-solid fa-caret-down"></i></button>
 
                     <div id="dropdown" class="hidden absolute right-0 bg-white shadow min-w-full rounded">
-                        <ul class="py-1 text-sm text-slate-700"></ul>
-                        <li>
-                            <div class="block py-2 px-4 border-b border-slate-250">{{request.user.username}}</div>
-                        </li>
-                        <li>
-                            <a href="#" class="black py-2 px-4 hover:bg-gray-100">logout</a>
-                        </li>
+                        <ul class="py-1 text-sm text-slate-700">
+                            <li>
+                                <div class="block py-2 px-4 border-b border-slate-200">{{request.user.username}}</div>
+                            </li>
+                            <li>
+                                <a href="#" class="black py-2 px-11 hover:bg-gray-200">logout</a>
+                            </li>
+                        </ul>
 
                     </div>
                 </div>
             <div class="bg-white rounded-full ml-3">
             <svg width="60" height="60" data-jdenticon-value="{{ request.user.username }}"></svg>
             </div>
+        </div>
         </div>
     </nav>
