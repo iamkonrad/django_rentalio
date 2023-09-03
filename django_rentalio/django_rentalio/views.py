@@ -6,6 +6,28 @@ from django.db.models import Count
 from rentals.models import Rental
 from publishers.models import Publisher
 from rentals.choices import STATUS_CHOICES
+from .forms import LoginForm,OTPForm
+from django.contrib.auth import login,authenticate, logout
+from django.contrib import messages
+from django.shortcuts import render
+
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    if request.method=='POST':
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request,username=username,password=password)
+            if user is not None:
+                pass
+            else:
+                messages.add_message(request,messages.ERROR, 'Invalid username or password')
+    context = {
+        'form':form
+    }
+
+    return render(request,'login.html',context)
 
 class DashboardView(TemplateView):
     template_name='dashboard.html'

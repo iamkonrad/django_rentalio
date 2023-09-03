@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from.views import DashboardView,change_theme, chart_data
+from.views import DashboardView,change_theme, chart_data,login_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',DashboardView.as_view(),name='home'),
+    path('login', login_view, name='login'),
     path('chart-data', chart_data, name='data'),
     path('switch/',change_theme,name='change'),
     path('books/',include('books.urls',namespace='books')),
