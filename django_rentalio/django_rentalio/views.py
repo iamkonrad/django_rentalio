@@ -12,13 +12,15 @@ class DashboardView(TemplateView):
 
 def chart_data(request):
     data = []
+
+
     all_books = len(Book.objects.all())
     all_book_titles = len(BookTitle.objects.all())
     data.append({
-        'labels':['books','book titles'],
-        'data':[all_books,all_book_titles],
-        'description':'unique book titles vs books',
-        'type':'bar',
+        'labels': ['books', 'book titles'],
+        'data': [all_books, all_book_titles],
+        'description': 'unique book titles vs books',
+        'type': 'bar',
     })
 
     titles_by_publisher = BookTitle.objects.values('publisher__name').annotate(Count('publisher__name'))
@@ -39,7 +41,7 @@ def chart_data(request):
         'labels':status,
         'data':book_title_count,
         'description':'book by status',
-        'type':'pie'
+        'type':'pie',
     })
 
     customers = len(Customer.objects.all())
@@ -48,10 +50,10 @@ def chart_data(request):
         'labels':['customers','publishers'],
         'data':[customers,publishers],
         'description': 'customers vs publishers',
-        'type':'bar'
+        'type':'bar',
     })
 
-    return JsonResponse
+    return JsonResponse ({'data': data})
 def change_theme(request):
     if 'is_dark_mode' in request.session:
         request.session['is_dark_mode'] = not request.session['is_dark_mode']
