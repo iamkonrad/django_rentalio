@@ -10,6 +10,7 @@ from .forms import LoginForm,OTPForm
 from django.contrib.auth import login,authenticate, logout
 from django.contrib import messages
 from django.shortcuts import render
+from .utils import send_otp
 
 
 def login_view(request):
@@ -20,7 +21,7 @@ def login_view(request):
             password = form.cleaned_data.get('password')
             user = authenticate(request,username=username,password=password)
             if user is not None:
-                pass
+                send_otp(request)
             else:
                 messages.add_message(request,messages.ERROR, 'Invalid username or password')
     context = {
