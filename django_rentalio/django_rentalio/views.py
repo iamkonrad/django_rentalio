@@ -123,4 +123,3 @@ def change_theme(request):
     else:
         request.session['is_dark_mode'] = True
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
