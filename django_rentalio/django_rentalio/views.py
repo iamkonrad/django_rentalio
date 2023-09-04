@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from customers.models import Customer
 from books.models import Book, BookTitle
 from django.views.generic import TemplateView
-from django.db.models import Count
+from django.db.models import Count, Sum
 from rentals.models import Rental
 from publishers.models import Publisher
 from rentals.choices import STATUS_CHOICES
@@ -16,6 +16,9 @@ import pyotp
 from django.contrib.auth.models import User
 
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 def login_view(request):
     form = LoginForm(request.POST or None)
     if request.method=='POST':
