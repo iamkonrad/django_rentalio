@@ -9,8 +9,11 @@ from rentals.choices import STATUS_CHOICES
 from .forms import LoginForm,OTPForm
 from django.contrib.auth import login,authenticate, logout
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .utils import send_otp
+from datetime import datetime
+import pyotp
+from django.contrib.auth.models import User
 
 
 def login_view(request):
@@ -22,6 +25,8 @@ def login_view(request):
             user = authenticate(request,username=username,password=password)
             if user is not None:
                 send_otp(request)
+                request.session['username'] = username
+                return redirect('otp')
             else:
                 messages.add_message(request,messages.ERROR, 'Invalid username or password')
     context = {
@@ -29,6 +34,41 @@ def login_view(request):
     }
 
     return render(request,'login.html',context)
+
+def otp_view(request):
+    error_message = None
+    form = OTPForm(request.POST or None)
+    if request.method =='POST':
+        if form.is_valid():
+            otp=form.cleaned_data.get('otp')
+            username = request.session.get('username')
+            otp_secret_key = request.session.get ('otp_secret_key')
+            otp_valid_until = request.session.get ('otp_valid_date')
+
+            if otp_secret_key and otp_valid_until:
+                valid_until = datetime.fromisoformat(otp_valid_until)
+                if valid_until>datetime.now():
+                    totp = pyotp.TOTP(otp_secret_key, interval=60)
+                    if totp.verify(otp):
+                        user =  get_object_or_404(User,username=username)
+                        login(request,user)
+                        del request.session['otp_secret_key']
+                        del request.session['otp_valid_date']
+                        return redirect('home')
+                    else:
+                        error_message= 'Invalid one-time password'
+                else:
+                    error_message = "One-time password has expired"
+            else:
+                error_message = "Something went wrong. Please try again later. "
+
+        if error_message: messages.add_message(request,messages.ERROR, error_message)
+
+    context= {'form':form}
+
+    return render(request,'otp.html',context)
+
+
 
 class DashboardView(TemplateView):
     template_name='dashboard.html'
