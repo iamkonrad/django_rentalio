@@ -78,6 +78,9 @@ def otp_view(request):
 class DashboardView(LoginRequiredMixin,TemplateView):
     template_name='dashboard.html'
 
+class AboutView(LoginRequiredMixin,TemplateView):
+    template_name = "about.html"
+
 @login_required
 def chart_data(request):
 

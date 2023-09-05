@@ -1,7 +1,9 @@
-    <nav class="fixed flex items-center h-16 bg-gradient-to-r from-cyan-500 to-blue-700 mb-2 w-full z-10 text-white">
+{% load static %}
+<nav class="fixed flex items-center h-16 bg-gradient-to-r from-cyan-500 to-blue-700 mb-2 w-full z-10 text-white">
         <div class="flex justify-between items-center w-full px-4 py-3">
-            <div>
-                logo
+            <a href="{% url 'home' %}" style="margin-left: 20px;">
+    <img src="{% static 'images/logo.png' %}" class="h-12" alt="rentalio logo">
+</a>
             </div>
             {% if request.user.is_authenticated %}
 
@@ -26,5 +28,4 @@
             </div>
         </div>
                 {% endif %}
-        </div>
     </nav>

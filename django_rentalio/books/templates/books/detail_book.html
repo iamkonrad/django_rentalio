@@ -5,7 +5,7 @@
         <script src="{% static 'books/detail_book.js' %}" defer></script>
     {% endblock scripts %}
 
-
+    {% block title %}book detail{% endblock title %}
     {% block content %}
     {% include 'components/header.html' with title=object.title.title description=object.title.publisher.name is_go_back=True %}
 
