@@ -14,6 +14,8 @@ from .utils import send_otp
 from datetime import datetime
 import pyotp
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 def logout_view(request):
@@ -73,9 +75,10 @@ def otp_view(request):
 
 
 
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin,TemplateView):
     template_name='dashboard.html'
 
+@login_required
 def chart_data(request):
     data = []
 
@@ -120,6 +123,8 @@ def chart_data(request):
     })
 
     return JsonResponse ({'data': data})
+
+@login_required
 def change_theme(request):
     if 'is_dark_mode' in request.session:
         request.session['is_dark_mode'] = not request.session['is_dark_mode']

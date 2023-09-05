@@ -61,6 +61,7 @@ INTERNAL_IPS=[
     "127.0.0.1",
 ]
 
+
 MIDDLEWARE = [
     'django_browser_reload.middleware.BrowserReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',

@@ -5,12 +5,14 @@ from .forms import BookTitleForm
 from django.urls import reverse,reverse_lazy
 from django.contrib import messages
 import string
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 #def book_title_list_view(request):
 #    qs=BookTitle.objects.all()
 #    return render(request, 'books/main.html',{'qs':qs})
 
-class BookTitleListView(FormView, ListView):
+class BookTitleListView(LoginRequiredMixin, FormView, ListView):
     #queryset=BookTitle.objects.all()
     template_name='books/main.html'
     context_object_name='qs'
@@ -47,12 +49,12 @@ class BookTitleListView(FormView, ListView):
 #    return render(request,'books/detail.html',{'obj':obj})
 
 
-class BookTitleDetailView(DetailView):
+class BookTitleDetailView(LoginRequiredMixin,DetailView):
     model = BookTitle
     template_name = 'books/detail.html'
 
 
-class BookDetailView(DetailView):
+class BookDetailView(LoginRequiredMixin,DetailView):
     model=Book
     template_name = 'books/detail_book.html'
 
@@ -61,7 +63,7 @@ class BookDetailView(DetailView):
         obj=get_object_or_404(Book,id=id)
         return obj
 
-class BookDeleteView(DeleteView):
+class BookDeleteView(LoginRequiredMixin,DeleteView):
     model=Book
     template_name = 'books/confirm_delete.html'
 
