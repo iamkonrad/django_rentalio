@@ -10,7 +10,7 @@ from .forms import LoginForm,OTPForm
 from django.contrib.auth import login,authenticate, logout
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from .utils import send_otp
+from .utils import send_otp, is_ajax
 from datetime import datetime
 import pyotp
 from django.contrib.auth.models import User
@@ -80,6 +80,10 @@ class DashboardView(LoginRequiredMixin,TemplateView):
 
 @login_required
 def chart_data(request):
+
+    if not is_ajax(request):
+        redirect('home')
+
     data = []
 
 

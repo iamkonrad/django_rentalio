@@ -2,6 +2,8 @@ import pyotp
 from datetime import datetime,timedelta
 
 
+def is_ajax(request):
+    return request.headers.get('x-requested-with') == 'XMLHttpRequest'
 
 def send_otp(request):
     totp = pyotp.TOTP(pyotp.random_base32(), interval=60)
