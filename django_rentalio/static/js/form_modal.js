@@ -18,3 +18,4 @@ formModal.addEventListener('click', ((e)=> {
 cancelBtn.addEventListener('click', ()=> {
     formModal.classList.add('hidden')
 })
+
