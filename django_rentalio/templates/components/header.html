@@ -11,12 +11,13 @@
                 </div>
                 {% endif %}
 
-             {% if is_go_back %}
-                      <div class="{% if is_form_available%} ml-3{% endif %}">
-                    <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 p-3 rounded-xl text-xl" id="go-back-btn">
-                      <i class="fa-solid fa-left-long"></i>
-                     </button>
-                </div>
-            {% endif %}
+{% if is_go_back %}
+    <div class="{% if is_form_available %}ml-3{% endif %}">
+        <button onclick="history.back();" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 p-3 rounded-xl text-xl" id="go-back-btn">
+            <i class="fa-solid fa-left-long"></i>
+        </button>
+    </div>
+{% endif %}
+
         </div>
 </div>
