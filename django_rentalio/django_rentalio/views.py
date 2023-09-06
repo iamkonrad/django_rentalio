@@ -2,7 +2,9 @@ from django.http import HttpResponseRedirect, JsonResponse
 from customers.models import Customer
 from books.models import Book, BookTitle
 from django.views.generic import TemplateView
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Q
+
+from rentals.forms import SearchBookForm
 from rentals.models import Rental
 from publishers.models import Publisher
 from rentals.choices import STATUS_CHOICES
@@ -16,6 +18,7 @@ import pyotp
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+
 
 
 def logout_view(request):
@@ -138,3 +141,6 @@ def change_theme(request):
     else:
         request.session['is_dark_mode'] = True
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+

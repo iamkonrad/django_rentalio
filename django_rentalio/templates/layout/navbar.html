@@ -3,7 +3,8 @@
         <div class="flex justify-between items-center w-full px-4 py-3">
             <a href="{% url 'home' %}" style="margin-left: 20px;">
     <img src="{% static 'images/logo.png' %}" class="h-12" alt="rentalio logo">
-</a>
+            </a>
+
             </div>
             {% if request.user.is_authenticated %}
 
@@ -22,6 +23,7 @@
                         </ul>
 
                     </div>
+
                 </div>
             <div class="bg-white rounded-full ml-3">
             <svg width="60" height="60" data-jdenticon-value="{{ request.user.username }}"></svg>

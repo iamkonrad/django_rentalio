@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import BookTitle, Book
 from django.views.generic import ListView, FormView,DetailView, DeleteView
 from .forms import BookTitleForm
@@ -11,6 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 #def book_title_list_view(request):
 #    qs=BookTitle.objects.all()
 #    return render(request, 'books/main.html',{'qs':qs})
+
+
 
 class BookTitleListView(LoginRequiredMixin, FormView, ListView):
     #queryset=BookTitle.objects.all()
