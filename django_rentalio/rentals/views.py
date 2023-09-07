@@ -61,6 +61,11 @@ class UpdateRentalStatusView(LoginRequiredMixin,UpdateView):
         messages.add_message(self.request, messages.INFO,f"{instance.book.id} has been updated")
         return super().form_valid(form)
 
+    def get_object(self):
+        rental = get_object_or_404(Rental, pk=id)
+        return get_object_or_404(Rental, pk=rental)
+
+
 class CreateNewRentalView(LoginRequiredMixin,CreateView):
     model = Rental
     template_name = 'rentals/new.html'

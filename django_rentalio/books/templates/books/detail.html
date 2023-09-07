@@ -14,7 +14,8 @@
         {% endfor %}
     {% endif %}
 
-    {% include 'components/header.html' with title=object.title.title description=object.publisher.name  is_go_back=True %}
+{% include 'components/header.html' with title=object.title description=object.publisher.name author=object.author.name is_go_back=True %}
+
 
 
     <div class="overflow-x-auto">

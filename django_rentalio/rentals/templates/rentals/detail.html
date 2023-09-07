@@ -15,7 +15,8 @@ rental history
         {% endfor %}
 {% endif %}
 
-{% include 'components/header.html' with title=object.title.title discription=object.title.publisher.name is_go_back=True %}
+        {% include 'components/header.html' with title=object.title.title description=object.title.publisher.name author=object.title.author.name is_go_back=True %}
+
 
 
 {%  if object %}
@@ -93,7 +94,7 @@ rental history
                 </tbody>
             </table>
                  <div class="mt-6 h-12">
-                     <a href="{% url 'rentals:download' book_id %}" class="p-3 bg-rose-400 hover:bg-rose-500 text-white rounded-lg">download</a>
+                     <a href="{% url 'rentals:download' book_id %}" class="p-3 bg-rose-400 hover:bg-rose-500 text-white rounded-lg">Download</a>
 
                  </div>
             </div>

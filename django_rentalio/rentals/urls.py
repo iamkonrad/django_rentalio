@@ -9,6 +9,6 @@ urlpatterns = [
     path('<str:book_id>/',BookRentalHistoryView.as_view(),name="detail"),
     path('<str:book_id>/new/', CreateNewRentalView.as_view(), name="new"),
     path('<str:book_id>/<str:pk>/', UpdateRentalStatusView.as_view(), name="update"),
-    path('<str:book_id>/download/', SelectDownloadRentalsView.as_view(), name="download"),
+    path('rentals/<int:id>/download/', SelectDownloadRentalsView.as_view(), name="download"),
 
 ]
