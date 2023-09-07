@@ -795,6 +795,10 @@ select {
   top: 150px;
 }
 
+.top-40 {
+  top: 10rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -930,6 +934,10 @@ select {
   height: 100vh;
 }
 
+.h-\[900px\] {
+  height: 900px;
+}
+
 .max-h-\[640px\] {
   max-height: 640px;
 }
@@ -960,6 +968,30 @@ select {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[700\] {
+  width: 700;
+}
+
+.w-\[1500\] {
+  width: 1500;
+}
+
+.w-\[1200\] {
+  width: 1200;
+}
+
+.w-\[500\] {
+  width: 500;
+}
+
+.w-\[600\] {
+  width: 600;
+}
+
+.w-\[1000\] {
+  width: 1000;
 }
 
 .min-w-full {

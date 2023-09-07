@@ -14,7 +14,8 @@
         {% endfor %}
     {% endif %}
 
-    {% include 'components/header.html' with title=object.title description='book title details' is_go_back=True %}
+    {% include 'components/header.html' with title=object.title.title description=object.publisher.name  is_go_back=True %}
+
 
     <div class="overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -72,9 +73,9 @@
                     </td>
                     <td class="py-4 px-6">
                         {% if obj.is_available %}
-                           <i class="fa-solid fa-check text-green 500"></i>
+                           <i class="fa-solid fa-check text-green 500" style="margin-left: 20px;"></i>
                         {% else %}
-                            <i class="fa-solid fa-xmark text-red-500"></i>
+                            <i class="fa-solid fa-xmark text-red-500" style="margin-left: 20px;"></i>
                         {% endif %}
                     </td>
                     <td class="py-4 px-6">

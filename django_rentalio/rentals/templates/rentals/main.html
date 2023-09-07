@@ -13,12 +13,14 @@ search rentals
 
 
 {% block content %}
+<div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-xl mb-10 h-[80px] flex justify-center items-center px-6" id="head">
+    <label for="{{ form.search.id_for_label }}" class="text-2xl text-white-600 dark:text-white">Search for books</label>
+</div>
 
-<div class="flex justify-center items-center h-[500px]">
-    <form class= "w-[400]" id="search-form" method="POST" autocomplete="off">
+<div class="flex justify-center items-center">
+<form style="width: 600px;" class="px-5 flex flex-col" id="search-form" method="POST" autocomplete="off">
         {% csrf_token %}
-        <label for="{{ form.search.id_for_label}}" class="block text-center text-3xl text-gray-700 dark:text-white font-bold mb-2">search for books</label>
-        {{form.search|add_class:'bg-slate-100 dark:bg-slate-300 text-slate-800 rounded-lg p-3 drop-shadow-xl w-full'}}
+        {{ form.search|add_class:'bg-slate-100 dark:bg-slate-300 text-slate-800 rounded-lg p-3 drop-shadow-xl ' }}
     </form>
 </div>
 

@@ -2,9 +2,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from customers.models import Customer
 from books.models import Book, BookTitle
 from django.views.generic import TemplateView
-from django.db.models import Count, Sum, Q
+from django.db.models import Count
 
-from rentals.forms import SearchBookForm
 from rentals.models import Rental
 from publishers.models import Publisher
 from rentals.choices import STATUS_CHOICES

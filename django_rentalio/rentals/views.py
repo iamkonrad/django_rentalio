@@ -12,7 +12,7 @@ from datetime import datetime
 from django .contrib import messages
 from .choices import FORMAT_CHOICES
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
+
 
 def search_book_view(request):
     form=SearchBookForm(request.POST or None)

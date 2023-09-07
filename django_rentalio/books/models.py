@@ -41,7 +41,7 @@ class BookTitle(models.Model):
 class Book(models.Model):
     #FK
     title = models.ForeignKey(BookTitle,on_delete=models.CASCADE)
-    ISBN=models.CharField(max_length=50,blank=True)
+    ISBN=models.CharField(max_length=20,blank=True)
 
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
     qr_code=models.ImageField(upload_to='qr_codes',blank=True,null=True)
