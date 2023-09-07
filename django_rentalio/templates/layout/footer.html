@@ -2,9 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Footer</title>
+    <!-- Include Tailwind CSS (you can link to a CDN or use your own build) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
+    <footer class="bg-gradient-to-r from-cyan-500 to-blue-700 text-white p-8">
+        <div class="flex justify-end items-start flex-wrap">
 
+            <div class="footer-section w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-4 mb-8">
+                <h6 class="text-uppercase mb-4 font-semibold">Privacy policy</h6>
+                <p class="text-sm">
+                    <a href="#" class="text-white">Terms of use</a>
+                </p>
+                <p class="text-sm">
+                    <a href="#" class="text-white">Personal data use</a>
+                </p>
+                <p class="text-sm">
+                    <a href="#" class="text-white">Disclaimer</a>
+                </p>
+                <p class="text-sm">
+                    <a href="#" class="text-white">Terms and conditions</a>
+                </p>
+            </div>
+
+       <div class="footer-section w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-4 mb-8">
+    <h6 class="text-uppercase mb-4 font-semibold">Opening hours</h6>
+    <div class="text-sm">
+        <p><i class="far fa-clock"></i> Mon - Fri: 9:00 AM - 5:00 PM</p>
+        <p><i class="far fa-clock"></i> Sat: 10:00 AM - 2:00 PM</p>
+        <p><i class="far fa-calendar-times"></i> Sun/Public holidays: Closed</p>
+    </div>
+</div>
+
+            <div class="footer-section w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-4 mb-8">
+                <h6 class="text-uppercase mb-4 font-semibold">Contact</h6>
+                <p class="text-sm">
+                    <i class="fas fa-home mr-3"></i> New York, NY 10012, US
+                </p>
+                <p class="text-sm">
+                    <i class="fas fa-envelope mr-3"></i> info@gmail.com
+                </p>
+                <p class="text-sm">
+                    <i class="fas fa-phone mr-3"></i> + 01 234 567 88
+                </p>
+                <p class="text-sm">
+                    <i class="fas fa-print mr-3"></i> + 01 234 567 89
+                </p>
+            </div>
+        </div>
+
+         <div class="mt-8 text-right">
+        <a href="#" class="fab fa-facebook-f text-white text-2xl mx-2"></a>
+        <a href="#" class="fab fa-twitter text-white text-2xl mx-2"></a>
+        <a href="#" class="fab fa-google text-white text-2xl mx-2"></a>
+        <a href="#" class="fab fa-instagram text-white text-2xl mx-2"></a>
+    </div>
+
+        <div class="copyright w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 ">
+            <!-- Copyright -->
+            <p class="text-sm">&copy; 2023 Copyright:
+                <a href="https://mdbootstrap.com/" class="text-white">RENTALio</a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
