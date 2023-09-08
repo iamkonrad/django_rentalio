@@ -80,12 +80,12 @@
 
     {% include 'components/book list header.html' with title="Book titles available"  is_form_available=True icon="<i class='fa-solid fa-plus'></i>" %}
 
-    {% for letter in letters %}
-        <a href="{% url 'books:main' letter|lower %}" class="{% if letter == selected_letter|upper%}underline{% endif %}">{{ letter }}</a>
-    {% endfor %}
+  {% for letter in letters %}
+    <a href="{% url 'authors:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 3px;">{{ letter }}</a>
+{% endfor %}
  |
     {% for num in "0123456789" %}
-    <a href="{% url 'books:main' num %}" class="{% if num == selected_letter %}underline{% endif %}">{{ num }}</a>
+    <a href="{% url 'authors:main' num %}" class="{% if num == selected_letter %}underline{% endif %}" style="margin-right: 3px;">{{ num }}</a>
 {% endfor %}
 
     {% if qs %}

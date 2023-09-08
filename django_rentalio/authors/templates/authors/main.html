@@ -82,4 +82,31 @@
 
 
 
+  {% for letter in letters %}
+    <a href="{% url 'authors:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 3px;">{{ letter }}</a>
+{% endfor %}
+ |
+    {% for num in "0123456789" %}
+    <a href="{% url 'authors:main' num %}" class="{% if num == selected_letter %}underline{% endif %}" style="margin-right: 3px;">{{ num }}</a>
+{% endfor %}
+
+
+
+
+
+{% if object_list %}
+<ul>
+    {% for author in object_list %}
+        <li><a href="{{ author.get_absolute_url }}">{{ author.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+        {% if selected_letter.isdigit %}
+            <div>No books written by authors starting with the number <b>{{selected_letter}}</b></div>
+        {% else %}
+            <div>No books written by authors starting with <b>{{selected_letter}}</b></div>
+        {% endif %}
+{% endif %}
+
+
 {% endblock content %}
