@@ -78,7 +78,7 @@ def otp_view(request):
 
 
 class DashboardView(LoginRequiredMixin,TemplateView):
-    template_name='dashboard.html'
+    template_name= 'stats.html'
 
 class AboutView(LoginRequiredMixin,TemplateView):
     template_name = "about.html"

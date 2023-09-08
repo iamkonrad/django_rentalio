@@ -31,6 +31,7 @@ urlpatterns = [
     path('chart-data/', chart_data, name='data'),
     path('switch/',change_theme,name='change'),
     path('books/',include('books.urls',namespace='books')),
+    path('authors/', include('authors.urls', namespace='authors')),
     path('rentals/', include('rentals.urls', namespace='rentals')),
     path("__reload__/", include("django_browser_reload.urls")),
 

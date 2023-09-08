@@ -14,17 +14,31 @@ from .choices import FORMAT_CHOICES
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-def search_book_view(request):
-    form=SearchBookForm(request.POST or None)
-    search_query = request.POST.get('search', None)
-    book_ex = Book.objects.filter(Q(ISBN=search_query) |Q (id=search_query)).exists()
 
-    if search_query is not None and book_ex:
-        return redirect ('rentals:detail',search_query)
+def search_book_view(request):
+    form = SearchBookForm(request.POST or None)
+    search_query = request.POST.get('search', '').strip()
+
+    if search_query:
+        book_ex = Book.objects.filter(
+            Q(ISBN__icontains=search_query) |
+            Q(id__icontains=search_query) |
+            Q(title__title__icontains=search_query)
+        ).exists()
+
+        if book_ex:
+            book = Book.objects.filter(
+                Q(ISBN__icontains=search_query) |
+                Q(id__icontains=search_query) |
+                Q(title__title__icontains=search_query)
+            ).first()
+
+            return redirect('rentals:detail', book.id)
+
     context = {
-        'form':form,
+        'form': form,
     }
-    return render(request,'rentals/main.html', context)
+    return render(request, 'rentals/main.html', context)
 
 class BookRentalHistoryView(LoginRequiredMixin,ListView):
     model = Rental
