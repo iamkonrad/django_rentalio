@@ -94,8 +94,10 @@
 {% if object_list %}
 <ul>
     {% for author in object_list %}
-        <li><a href="{{ author.get_absolute_url }}">{{ author.name }}</a></li>
+        <li><a href="{{ author.get_absolute_url }}">{{ author.formatted_name }}</a></li>
     {% endfor %}
+
+
 </ul>
 {% else %}
         {% if selected_letter.isdigit %}
