@@ -2,6 +2,8 @@ from django.db import models
 from books.models import Book
 from django.utils.text import slugify
 
+from rentals.choices import AGE_GROUPS
+
 
 class Customer(models.Model):
     #Many To Many
@@ -9,7 +11,12 @@ class Customer(models.Model):
 
     first_name=models.CharField(max_length=300)
     last_name=models.CharField(max_length=300)
-
+    age_group= models.CharField(
+        max_length=5,
+        choices=AGE_GROUPS,
+        default='',
+        blank=True,
+    )
     username=models.CharField(max_length=300, blank=True, unique=True)
     additional_info=models.TextField(blank=True)
     rating=models.PositiveSmallIntegerField(default=50)
