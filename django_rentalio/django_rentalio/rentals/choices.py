@@ -1,8 +1,8 @@
 STATUS_CHOICES = (
-    ('#0','rented'),
-    ('#1', 'returned'),
-    ('#2', 'lost'),
-    ('#3', 'delayed'),
+    ('#0','Rented'),
+    ('#1', 'Returned'),
+    ('#2', 'Lost'),
+    ('#3', 'Delayed'),
 )
 
 FORMAT_CHOICES = (
@@ -13,7 +13,7 @@ FORMAT_CHOICES = (
 
 GENRE_CHOICES = (
     ('DOC', 'Documentary'),
-    ('DRAMA', 'Drama'),
+    ('DRA', 'Drama'),
     ('PROSE', 'Prose'),
     ('POEM', 'Poem'),
     ('FICTION', 'Fiction'),

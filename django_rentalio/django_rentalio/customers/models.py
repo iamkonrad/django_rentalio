@@ -9,6 +9,7 @@ class Customer(models.Model):
 
     first_name=models.CharField(max_length=300)
     last_name=models.CharField(max_length=300)
+
     username=models.CharField(max_length=300, blank=True, unique=True)
     additional_info=models.TextField(blank=True)
     rating=models.PositiveSmallIntegerField(default=50)

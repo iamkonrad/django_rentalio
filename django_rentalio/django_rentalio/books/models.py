@@ -11,6 +11,8 @@ from PIL import Image
 from rentals.choices import STATUS_CHOICES,GENRE_CHOICES
 from .utils import hash_book_info
 
+status = models.CharField(max_length=2, choices=STATUS_CHOICES)
+
 
 class BookTitle(models.Model):
     #FK
@@ -35,14 +37,14 @@ class BookTitle(models.Model):
         letter = self.title[:1].lower()
         return reverse("books:detail",kwargs={"letter":letter, "slug":self.slug})
 
-
     def __str__(self):
         return f"Book position:{self.title}"
 
-    def save(self,*args,**kwargs):
+
+    def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug=slugify(self.title)
-            super().save(*args,**kwargs)
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 class Book(models.Model):
     #FK

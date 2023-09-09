@@ -6,7 +6,7 @@ from django.db.models import Count
 
 from rentals.models import Rental
 from publishers.models import Publisher
-from rentals.choices import STATUS_CHOICES
+from rentals.choices import STATUS_CHOICES, GENRE_CHOICES
 from .forms import LoginForm,OTPForm
 from django.contrib.auth import login,authenticate, logout
 from django.contrib import messages
@@ -95,9 +95,9 @@ def chart_data(request):
     all_books = len(Book.objects.all())
     all_book_titles = len(BookTitle.objects.all())
     data.append({
-        'labels': ['books', 'book titles'],
+        'labels': ['Book Copies', 'Book Titles'],
         'data': [all_books, all_book_titles],
-        'description': 'unique book titles vs books',
+        'description': 'Book Titles vs Book Copies',
         'type': 'bar',
     })
 
@@ -107,7 +107,7 @@ def chart_data(request):
     data.append({
         'labels':publisher_names,
         'data':publisher_names_count,
-        'description':'book title count by publisher',
+        'description':'Book Titles by Publishers',
         'type':'pie',
     })
 
@@ -118,17 +118,27 @@ def chart_data(request):
     data.append({
         'labels':status,
         'data':book_title_count,
-        'description':'book by status',
+        'description':'Books by Status',
         'type':'pie',
     })
 
     customers = len(Customer.objects.all())
     publishers = len(Publisher.objects.all())
     data.append({
-        'labels':['customers','publishers'],
+        'labels':['Customers','Publishers'],
         'data':[customers,publishers],
-        'description': 'customers vs publishers',
+        'description': 'Customers vs Publishers',
         'type':'bar',
+    })
+
+    book_by_genres = BookTitle.objects.values('genre').annotate(book_count=Count('genre'))
+    genre_labels = [dict(GENRE_CHOICES)[x['genre']] for x in book_by_genres]
+    genre_count = [x['book_count'] for x in book_by_genres]
+    data.append({
+        'labels': genre_labels,
+        'data': genre_count,
+        'description': 'Books by Genres',
+        'type': 'pie',
     })
 
     return JsonResponse ({'data': data})

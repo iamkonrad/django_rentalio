@@ -10,7 +10,8 @@ class BookResource(resources.ModelResource):
     publisher = Field()
     class Meta:
         model=Book
-        fields=('title','publisher','isbn','qr_code','status')
+        fields=('title','publisher','ISBN','qr_code','status')
+
 
     def dehydrate_title(self,obj):
         return obj.title.title
