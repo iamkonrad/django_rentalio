@@ -17,7 +17,7 @@
 {% include 'components/author header.html' with author=author.name birth_year=author.birth_year is_go_back=True %}
 
 
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto pt-">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                 <tr class="border">
@@ -35,6 +35,9 @@
                     </th>
                     <th scope="col" class="py-3 px-6">
                         qr code
+                    </th>
+                           <th scope="col" class="py-3 px-6">
+                        publisher
                     </th>
                     <th scope="col" class="py-3 px-6">
                         genre
@@ -65,19 +68,21 @@
                     <td class="py-4 px-6">
                         <img src="{{book.qr_code.url}}" alt="{{book.ISBN}}" class="h-12 w-12 rounded">
                     </td>
+                     <th scope="col" class="py-3 px-6">
+                        {{ book.title.publisher }}
+                    </th>
                     <td class="py-4 px-6">
                         {{book.title.genre}}
                     </td>
                     <td class="py-4 px-6">
                         {% if book.is_available %}
-                           <i class="fa-solid fa-check text-green 500" style="margin-left: 20px;"></i>
+                           <i class="fa-solid fa-check text-green-500" style="margin-left: 20px;"></i>
                         {% else %}
                             <i class="fa-solid fa-xmark text-red-500" style="margin-left: 20px;"></i>
                         {% endif %}
                     </td>
                     <td class="py-4 px-6">
                         {% include 'components/buttons/select_button.html' with href=book.get_absolute_url %}
-
 
                 </tr>
                 {% endfor %}
@@ -118,4 +123,3 @@
 
 
 {% endblock content %}
-
