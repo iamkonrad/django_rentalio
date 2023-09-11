@@ -1,10 +1,9 @@
     {% url 'home' as path_to_home %}
     {% url 'about' as path_to_about %}
     {% url 'stats' as path_to_stats %}
-    {% url 'books:main' as path_to_books %}
-    {% url 'rentals:main' as path_to_rentals %}
-    {% url 'authors:main' as path_to_authors %}
-
+    {% url 'books:main' letter='None' as path_to_books %}
+    {% url 'rentals:main'  as path_to_rentals %}
+    {% url 'authors:main' letter='None' as path_to_authors %}
 
 
 

@@ -37,5 +37,3 @@ class Customer(models.Model):
 
             self.username=username
         super().save(*args,**kwargs)
-
-

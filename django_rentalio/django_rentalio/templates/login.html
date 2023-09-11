@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load widget_tweaks %}
 
 {% block title %} login
@@ -14,7 +15,8 @@
     {% endfor %}
 {% endif %}
 
-<div class="flex justify-center mt-10">
+<div class="flex justify-center mt-10 min-h-screen">
+
     <div class="border border-slate-300 rounded-lg p-6 w-1/2">
          <form method="POST" >
         {% csrf_token %}
@@ -25,8 +27,13 @@
                 {% render_field field class="bg-slate-100 dark:bg-slate-300 text-slate-800 rounded-lg p-3 drop-shadow-xl w-full" %}
             </div>
 
+<div style="position: absolute; left: 53%;top: 50%; transform: translateX(-50%); width: 45%; text-align: center; z-index: -1;">
+    <img src="{% static 'images/mainlogin1.png' %}" alt="Homepage photo">
+</div>
+
+
         {% endfor %}
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+         <button type="submit" style="z-index: 1000;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
     </form>
     </div>
 </div>

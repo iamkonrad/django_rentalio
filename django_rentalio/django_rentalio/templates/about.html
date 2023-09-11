@@ -3,29 +3,47 @@
 {% load static %}
 {% load widget_tweaks %}
 
-
-
 {% block title %}
 about
 {% endblock title %}
-
 
 {% block content %}
 <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-xl mb-10 h-[80px] flex justify-center items-center px-6" id="head">
     <label for="{{ form.search.id_for_label }}" class="text-3xl text-white-600 dark:text-white">About</label>
 </div>
 
-<div class="container mx-auto mt-8 px-4">
-   <p class="text-medium mb-8">
-           Ano ang Lorem Ipsum?
-    Ang Lorem Ipsum ay ginagamit na modelo ng industriya ng pagpriprint at pagtytypeset. Ang Lorem Ipsum ang naging regular
-    na modelo simula pa noong 1500s, noong may isang di kilalang manlilimbag and kumuha ng galley ng type at ginulo ang
-    pagkaka-ayos nito upang makagawa ng libro ng mga type specimen. Nalagpasan nito hindi lang limang siglo, kundi nalagpasan
-    din nito ang paglaganap ng electronic typesetting at nanatiling parehas. Sumikat ito noong 1960s kasabay ng pag
-    labas ng Letraset sheets na mayroong mga talata ng Lorem Ipsum, at kamakailan lang sa mga desktop publishing software
-    tulad ng Aldus Pagemaker ginamit ang mga bersyon ng Lorem Ipsum.
-    </p>
+<div class="container mx-auto mt-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+   <div>
+       <h2 class="text-xl font-semibold mb-4">Ano ang Lorem Ipsum?</h2>
+       <p class="text-medium mb-8 leading-relaxed">
+            Ang Lorem Ipsum ay ginagamit na modelo ng industriya ng pagpriprint at pagtytypeset. Ang Lorem Ipsum ang naging regular na modelo simula pa noong 1500s, noong may isang di kilalang manlilimbag and kumuha ng galley ng type at ginulo ang pagkaka-ayos nito upang makagawa ng libro ng mga type specimen. Nalagpasan nito hindi lang limang siglo, kundi nalagpasan din nito ang paglaganap ng electronic typesetting at nanatiling parehas. Sumikat ito noong 1960s kasabay ng pag labas ng Letraset sheets na mayroong mga talata ng Lorem Ipsum, at kamakailan lang sa mga desktop publishing software tulad ng Aldus Pagemaker ginamit ang mga bersyon ng Lorem Ipsum.
+        </p>
+    </div>
+    <div>
+        <img src="{% static 'images/mainabout1.png' %}" alt="About illustration" >
+    </div>
+</div>
 
+<div class="container mx-auto mt-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+   <div>
+        <img src="{% static 'images/mainabout2.png' %}" alt="About illustration" class="max-w-full h-auto">
+    </div>
+    <div class="text-left">
+       <p class="text-medium mb-8 leading-relaxed">
+            Ang Lorem Ipsum ay ginagamit na modelo ng industriya ng pagpriprint at pagtytypeset. Ang Lorem Ipsum ang naging regular na modelo simula pa noong 1500s, noong may isang di kilalang manlilimbag and kumuha ng galley ng type at ginulo ang pagkaka-ayos nito upang makagawa ng libro ng mga type specimen. Nalagpasan nito hindi lang limang siglo, kundi nalagpasan din nito ang paglaganap ng electronic typesetting at nanatiling parehas. Sumikat ito noong 1960s kasabay ng pag labas ng Letraset sheets na mayroong mga talata ng Lorem Ipsum, at kamakailan lang sa mga desktop publishing software tulad ng Aldus Pagemaker ginamit ang mga bersyon ng Lorem Ipsum.
+        </p>
+    </div>
+</div>
+
+
+    <div class="container mx-auto mt-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+   <div>
+       <p class="text-medium mb-8 leading-relaxed">
+            Ang Lorem Ipsum ay ginagamit na modelo ng industriya ng pagpriprint at pagtytypeset. Ang Lorem Ipsum ang naging regular na modelo simula pa noong 1500s, noong may isang di kilalang manlilimbag and kumuha ng galley ng type at ginulo ang pagkaka-ayos nito upang makagawa ng libro ng mga type specimen. Nalagpasan nito hindi lang limang siglo, kundi nalagpasan din nito ang paglaganap ng electronic typesetting at nanatiling parehas. Sumikat ito noong 1960s kasabay ng pag labas ng Letraset sheets na mayroong mga talata ng Lorem Ipsum, at kamakailan lang sa mga desktop publishing software tulad ng Aldus Pagemaker ginamit ang mga bersyon ng Lorem Ipsum.
+        </p>
+    </div>
+    <div>
+        <img src="{% static 'images/mainabout3.png' %}" alt="About illustration" >
+    </div>
 </div>
 {% endblock content %}
-

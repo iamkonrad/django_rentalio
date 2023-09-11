@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load widget_tweaks %}
 
 {% block title %} OTP verification {% endblock title %}
@@ -13,23 +14,26 @@
     {% endfor %}
 {% endif %}
 
-{% include 'components/book list header.html' with title="OTP verification" description="Please provide your one time password" %}
+<div class="flex justify-center mt-10 min-h-screen">
 
-
-<div class="flex justify-center mt-10">
     <div class="border border-slate-300 rounded-lg p-6 w-1/2">
          <form method="POST" >
         {% csrf_token %}
+        {% for field in form %}
 
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.otp.id_for_label }}">{{ form.otp.label }}</label>
-                {{  form.otp| add_class:"bg-slate-100 dark:bg-slate-300 text-slate-800 rounded-lg p-3 drop-shadow-xl w-full" }}
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {% render_field field class="bg-slate-100 dark:bg-slate-300 text-slate-800 rounded-lg p-3 drop-shadow-xl w-full" %}
             </div>
 
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-    </form>
+        {% endfor %}
+        <button type="submit" style="z-index: 1000;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+        </form>
+    </div>
+
+    <div style="position: absolute; left: 53%;top: 40%; transform: translateX(-50%); width: 50%; text-align: center; z-index: -1;">
+        <img src="{% static 'images/mainotp1.png' %}" alt="Homepage photo">
     </div>
 </div>
-
 
 {% endblock content %}
