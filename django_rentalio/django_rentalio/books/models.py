@@ -41,15 +41,16 @@ class BookTitle(models.Model):
         return f"Book position:{self.title}"
 
 
-    def save(self, *args, **kwargs):
+    def save(self,*args,**kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
+            self.slug=slugify(self.title)
+            super().save(*args,**kwargs)
 
 class Book(models.Model):
     #FK
     title = models.ForeignKey(BookTitle,on_delete=models.CASCADE)
-    ISBN=models.CharField(max_length=20,blank=True)
+    ISBN=models.CharField(max_length=16,blank=True)
+
 
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
     qr_code=models.ImageField(upload_to='qr_codes',blank=True,null=True)
@@ -94,7 +95,7 @@ class Book(models.Model):
             self.ISBN= hash_book_info(self.title.title,self.title.publisher.name)
 
             qrcode_img=qrcode.make(self.ISBN)                                                                           #QR_CODE FUNCTIONALITY
-            canvas = Image.new('RGB', (qrcode_img.pixel_size,qrcode_img.pixel_size), 'white')          #qr code display canvas
+            canvas = Image.new('RGB', (qrcode_img.pixel_size,qrcode_img.pixel_size), 'white')                           #qr code display canvas
             canvas.paste(qrcode_img)
             fname = f'qr_code-{self.ISBN}.png'                                                                          #file name
             buffer = BytesIO()

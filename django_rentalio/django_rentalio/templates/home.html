@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'dashboard.js' %}"></script>
+    <script src="{% static 'current_time.js' %}"></script>
+{% endblock scripts %}defer
+
+{% block title %}
+Homepage
+{% endblock title %}
+
+{%  block content%}
+
+Hello {{ user.username }} Welcome to RENTALio. Home to the best rentals.
+    <br><hr>
+
+
+    As of <span id="current-time"></span> we have {{ book_titles_count }} book titles, written by {{ authors_count }} authors, totaling {{ book_copies_count }} book copies.
+
+          <br> Please find your desired category on the left.
+
+  <div>
+    <img src="{% static 'images/homepage8.png' %}" alt="Homepage photo" style="width:60%; height:auto;">
+  </div>
+
+</div>
+
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from .models import BookTitle, Book
-from django.views.generic import ListView, FormView,DetailView, DeleteView
+from django.views.generic import ListView, FormView, DetailView, DeleteView
 from .forms import BookTitleForm
 from django.urls import reverse
 from django.contrib import messages

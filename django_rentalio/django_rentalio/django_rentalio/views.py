@@ -1,4 +1,6 @@
 from django.http import HttpResponseRedirect, JsonResponse
+
+from authors.models import Author
 from customers.models import Customer
 from books.models import Book, BookTitle
 from django.views.generic import TemplateView
@@ -76,8 +78,22 @@ def otp_view(request):
     return render(request,'otp.html',context)
 
 
+class HomeView(LoginRequiredMixin,TemplateView):
+    template_name= 'home.html'
 
-class DashboardView(LoginRequiredMixin,TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['book_titles_count'] = BookTitle.objects.all().count()
+        context['authors_count'] = Author.objects.all().count()
+        context['book_copies_count'] = Book.objects.all().count()
+
+        return context
+
+
+
+
+class StatsView(LoginRequiredMixin,TemplateView):
     template_name= 'stats.html'
 
 class AboutView(LoginRequiredMixin,TemplateView):
@@ -150,6 +166,3 @@ def change_theme(request):
     else:
         request.session['is_dark_mode'] = True
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-
-
