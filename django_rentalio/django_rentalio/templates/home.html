@@ -12,19 +12,34 @@ Homepage
 
 {%  block content%}
 
-Hello {{ user.username }} Welcome to RENTALio. Home to the best rentals.
+    <h1 style="font-size: 1.5em; font-weight: 500;">Hello: {{ user.username }} Welcome to RENTALio. Home to the best rentals.</h1>
     <br><hr>
 
+          <br>
+<p style="font-size: 18px; line-height: 1.6;">
+    As of <span id="current-time"></span>     we have:
+    <br>
+    <span id="current-time" style="font-weight: bold; color: #007BFF; margin: 0 5px;"></span>
+    <span style="font-weight: bold; color: #007BFF;">{{ book_titles_count }}</span> book titles, written by
+    <span style="font-weight: bold; color: #007BFF;">{{ authors_count }}</span> authors - in total:
+    <span style="font-weight: bold; color: #007BFF;">{{ book_copies_count }}</span> book copies and still growing!
+</p>
 
-    As of <span id="current-time"></span> we have {{ book_titles_count }} book titles, written by {{ authors_count }} authors, totaling {{ book_copies_count }} book copies.
-
-          <br> Please find your desired category on the left.
-
-  <div>
-    <img src="{% static 'images/homepage8.png' %}" alt="Homepage photo" style="width:60%; height:auto;">
-  </div>
-
+<div style="position: absolute; left: 48%; top: 45%; transform: translateX(-50%); text-align: center; z-index: 2;">
+    <a href="{% url 'books:main' letter=None  %}" style="text-decoration: none;">
+        <button class="bg-gradient-to-r from-cyan-500 to-blue-700 text-white p-2 rounded-lg border border-gray-300 cursor-pointer">
+            Start searching for books to rent
+        </button>
+    </a>
 </div>
 
+
+<div style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%; text-align: center; z-index: 1;">
+    <img src="{% static 'images/homepage8.png' %}" alt="Homepage photo" style="width:100%; height:auto;">
 </div>
+
+
+
+
+
 {% endblock %}

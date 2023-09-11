@@ -32,7 +32,7 @@ class BookTitleListView(LoginRequiredMixin, FormView, ListView):
 
         context['letters'] = letters
         context['numbers'] = numbers
-        context['selected_letter'] = self.kwargs.get('letter') if self.kwargs.get('letter') else 'a'
+        context['selected_letter'] = self.kwargs.get('letter')
         return context
 
     def form_valid(self, form):

@@ -91,8 +91,6 @@ class HomeView(LoginRequiredMixin,TemplateView):
         return context
 
 
-
-
 class StatsView(LoginRequiredMixin,TemplateView):
     template_name= 'stats.html'
 

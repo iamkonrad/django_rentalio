@@ -13,10 +13,10 @@
 {% block content %}
 
     {% if messages %}
-        {% for messages in messages %}
-            {% if 'info' in messages.tags %}
+        {% for message in messages %}
+            {% if 'info' in message.tags %}
                 {% include 'components/alert.html' with is_info=True title="Success" body=message %}
-            {% elif 'error' in messages.tags %}
+            {% elif 'error' in message.tags %}
                 {% include 'components/alert.html' with is_info=False title="Error" body=message %}
             {% endif %}
         {% endfor %}
@@ -94,13 +94,23 @@
                 <li><a href="{{el.get_absolute_url}}">{{el.title}}</a></li>
             {% endfor %}
         </ul>
-        {% else %}
-        {% if selected_letter.isdigit %}
+{% else %}
+    {% if selected_letter %}
+        {% if selected_letter == "None" %}
+            <div></div>
+        {% elif selected_letter.isdigit %}
             <div>No book titles starting with the number <b>{{selected_letter}}</b></div>
         {% else %}
             <div>No book titles starting with <b>{{selected_letter}}</b></div>
+        {% endif %}
     {% endif %}
 {% endif %}
+
+<div style="position: absolute; left: 90%;top: 48%; transform: translateX(-50%); width: 48%; text-align: center;">
+    <img src="{% static 'images/mainbook3.png' %}" alt="Homepage photo">
+</div>
+
+
 
 
 {% endblock content %}
