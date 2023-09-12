@@ -76,8 +76,8 @@ class UpdateRentalStatusView(LoginRequiredMixin,UpdateView):
         return super().form_valid(form)
 
     def get_object(self):
-        rental = get_object_or_404(Rental, pk=id)
-        return get_object_or_404(Rental, pk=rental)
+        rental_id = self.kwargs.get('pk')
+        return get_object_or_404(Rental, pk=rental_id)
 
 
 class CreateNewRentalView(LoginRequiredMixin,CreateView):

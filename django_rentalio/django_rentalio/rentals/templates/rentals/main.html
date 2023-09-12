@@ -20,7 +20,7 @@ search rentals
 <div class="flex justify-center items-center">
 <form style="width: 600px;" class="px-5 flex flex-col" id="search-form" method="POST" autocomplete="off">
         {% csrf_token %}
-        {{ form.search|add_class:'bg-slate-100 dark:bg-slate-300 text-slate-800 rounded-lg p-3 drop-shadow-xl ' }}
+        {{ form.search|add_class:'text-xl bg-slate-100 dark:bg-slate-300 text-slate-800 rounded-lg p-3 drop-shadow-xl ' }}
     </form>
 </div>
 

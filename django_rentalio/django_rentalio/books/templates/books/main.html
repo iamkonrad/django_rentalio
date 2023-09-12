@@ -80,13 +80,18 @@
 
     {% include 'components/book list header.html' with title="Book titles available"  is_form_available=True icon="<i class='fa-solid fa-plus'></i>" %}
 
-  {% for letter in letters %}
-    <a href="{% url 'books:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 3px;">{{ letter }}</a>
-{% endfor %}
- |
+<div class="text-xl text-black dark:text-white">
+
+    {% for letter in letters %}
+        <a href="{% url 'books:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 3px;">{{ letter }}</a>
+    {% endfor %}
+     |
     {% for num in "0123456789" %}
-    <a href="{% url 'books:main' num %}" class="{% if num == selected_letter %}underline{% endif %}" style="margin-right: 3px;">{{ num }}</a>
-{% endfor %}
+        <a href="{% url 'books:main' num %}" class="{% if num == selected_letter %}underline{% endif %}" style="margin-right: 3px;">{{ num }}</a>
+    {% endfor %}
+</div>
+
+<div class="text-xl text-gray-600 dark:text-white">
 
     {% if qs %}
         <ul>
@@ -94,17 +99,19 @@
                 <li><a href="{{el.get_absolute_url}}">{{el.title}}</a></li>
             {% endfor %}
         </ul>
-{% else %}
-    {% if selected_letter %}
-        {% if selected_letter == "None" %}
-            <div>Please select a letter or a number in order to display the titles associated with it.</div>
-        {% elif selected_letter.isdigit %}
-            <div>No book titles starting with the number <b>{{selected_letter}}</b></div>
-        {% else %}
-            <div>No book titles starting with <b>{{selected_letter}}</b></div>
+    {% else %}
+        {% if selected_letter %}
+            {% if selected_letter == "None" %}
+                <div>Please select a letter or a number in order to display the titles associated with it.</div>
+            {% elif selected_letter.isdigit %}
+                <div>No book titles starting with the number <b>{{selected_letter}}</b></div>
+            {% else %}
+                <div>No book titles starting with <b>{{selected_letter}}</b></div>
+            {% endif %}
         {% endif %}
     {% endif %}
-{% endif %}
+</div>
+
 
 <div style="position: absolute; left: 90%;top: 48%; transform: translateX(-50%); width: 48%; text-align: center;">
     <img src="{% static 'images/mainbook3.png' %}" alt="Homepage photo">
