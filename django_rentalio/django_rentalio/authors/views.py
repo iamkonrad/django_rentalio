@@ -6,7 +6,6 @@ from books.models import BookTitle, Book
 from authors.models import Author
 from urllib.parse import unquote
 
-# Create your views here.
 
 
 class AuthorsListView(LoginRequiredMixin, ListView):
@@ -27,7 +26,7 @@ class AuthorsListView(LoginRequiredMixin, ListView):
 
         context['letters'] = letters
         context['numbers'] = numbers
-        context['selected_letter'] = self.kwargs.get('letter') or 'A'
+        context['selected_letter'] = self.kwargs.get('letter')
         return context
 
 

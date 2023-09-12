@@ -3,7 +3,7 @@
 
 {% block scripts %}
     <script src="{% static 'dashboard.js' %}"></script>
-    <script src="{% static 'current_time.js' %}"></script>
+    <script src="{% static 'current_date.js' %}" defer></script>
 {% endblock scripts %}defer
 
 {% block title %}
@@ -11,30 +11,32 @@ Homepage
 {% endblock title %}
 
 {%  block content%}
+<div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-xl mb-10 h-[80px] flex justify-center items-center px-6" id="head">
+ <label for="{{ form.search.id_for_label }}" class="text-3xl text-white-600 dark:text-white">
+        Welcome to RENTALio: {{ user.username }} . Home to the best rentals.
+</label>
+</div>
 
-    <h1 style="font-size: 1.5em; font-weight: 500;">Hello: {{ user.username }} Welcome to RENTALio. Home to the best rentals.</h1>
-    <br><hr>
 
-          <br>
-<p style="font-size: 18px; line-height: 1.6;">
-    As of <span id="current-time"></span>     we have:
-    <br>
-    <span id="current-time" style="font-weight: bold; color: #007BFF; margin: 0 5px;"></span>
-    <span style="font-weight: bold; color: #007BFF;">{{ book_titles_count }}</span> book titles, written by
-    <span style="font-weight: bold; color: #007BFF;">{{ authors_count }}</span> authors - in total:
+<p class="text-xl" style="line-height: 1.6; background-color: #f8f9fa; padding: 15px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+As of <span id="current-time" style="font-style: normal; color: #007BFF; font-weight: bold;"></span> we have:
+    <span style="font-weight: bold; color: #007BFF; margin: 0 5px;">{{ book_titles_count }}</span> book titles, written by
+    <span style="font-weight: bold; color: #007BFF;">{{ authors_count }}</span> authors. In total
     <span style="font-weight: bold; color: #007BFF;">{{ book_copies_count }}</span> book copies and still growing!
 </p>
 
-<div style="position: absolute; left: 48%; top: 45%; transform: translateX(-50%); text-align: center; z-index: 2;">
+<div style="position: absolute; left: 48%; top: 53%; transform: translate(-50%, -50%); text-align: center; z-index: 2;">
     <a href="{% url 'books:main' letter=None  %}" style="text-decoration: none;">
-        <button class="bg-gradient-to-r from-cyan-500 to-blue-700 text-white p-2 rounded-lg border border-gray-300 cursor-pointer">
-            Start searching for books to rent
-        </button>
+       <button class="bg-gradient-to-r from-cyan-500 to-blue-700 text-white p-2 rounded-lg border border-gray-300 cursor-pointer shadow-md text-2xl transition duration-300 ease-in-out hover:bg-blue-700 hover:shadow-xl">
+    Start searching for books to rent
+</button>
+
     </a>
 </div>
 
 
-<div style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%; text-align: center; z-index: 1;">
+
+<div style="position: absolute; left: 50%; top:40%; transform: translateX(-50%); width: 50%; text-align: center; z-index: 1;">
     <img src="{% static 'images/homepage8.png' %}" alt="Homepage photo" style="width:100%; height:auto;">
 </div>
 

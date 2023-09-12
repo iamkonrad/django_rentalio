@@ -97,7 +97,7 @@
 {% else %}
     {% if selected_letter %}
         {% if selected_letter == "None" %}
-            <div></div>
+            <div>Please select a letter or a number in order to display the titles associated with it.</div>
         {% elif selected_letter.isdigit %}
             <div>No book titles starting with the number <b>{{selected_letter}}</b></div>
         {% else %}
@@ -109,8 +109,6 @@
 <div style="position: absolute; left: 90%;top: 48%; transform: translateX(-50%); width: 48%; text-align: center;">
     <img src="{% static 'images/mainbook3.png' %}" alt="Homepage photo">
 </div>
-
-
 
 
 {% endblock content %}
