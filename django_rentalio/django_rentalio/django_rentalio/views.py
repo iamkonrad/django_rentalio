@@ -155,6 +155,19 @@ def chart_data(request):
         'type': 'pie',
     })
 
+
+    publishers_by_country=Publisher.objects.values('country').annotate(publisher_count=Count('country'))
+    country_labels=[x['country'] for x in publishers_by_country]
+    publisher_count=[x['publisher_count'] for x in publishers_by_country]
+
+    data.append ({
+        'labels': country_labels,
+        'data': publisher_count,
+        'description': 'Book Publishers by Country',
+        'type': 'pie',
+    })
+
+
     return JsonResponse ({'data': data})
 
 @login_required

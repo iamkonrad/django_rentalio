@@ -21,6 +21,8 @@ class Rental(models.Model):
     def __str__(self):
         return f"{self.book.ISBN} rented by{self.customer.username}"
 
+
+
     @property
     def status_text(self):
         statuses=dict(STATUS_CHOICES)
