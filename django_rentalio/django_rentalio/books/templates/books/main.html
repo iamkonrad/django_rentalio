@@ -81,7 +81,8 @@
     {% include 'components/book list header.html' with title="Book titles available"  is_form_available=True icon="<i class='fa-solid fa-plus'></i>" %}
 
 <div class="text-xl text-black dark:text-white">
-
+    <a href="{% url 'books:main' 'all' %}" class="{% if 'all' == selected_letter %}underline{% endif %}" style="margin-right: 3px;">All</a>
+ |
     {% for letter in letters %}
         <a href="{% url 'books:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 3px;">{{ letter }}</a>
     {% endfor %}
@@ -96,7 +97,7 @@
     {% if qs %}
         <ul>
             {% for el in qs %}
-                <li><a href="{{el.get_absolute_url}}">{{el.title}}</a></li>
+                <li><a href="{{el.get_absolute_url}}"> {{forloop.counter}}. {{el.title}}</a></li>
             {% endfor %}
         </ul>
     {% else %}

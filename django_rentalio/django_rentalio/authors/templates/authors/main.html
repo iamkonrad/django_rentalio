@@ -82,6 +82,8 @@
 
 
 <div class="text-xl text-black dark:text-white">
+    <a href="{% url 'authors:main' 'all' %}" class="{% if 'all' == selected_letter %}underline{% endif %}" style="margin-right: 3px;">All</a>
+ |
 
 {% for letter in letters %}
     <a href="{% url 'authors:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 3px;">{{ letter }}</a>
@@ -96,7 +98,7 @@
 {% if object_list %}
     <ul>
         {% for author in object_list %}
-            <li><a href="{{ author.get_absolute_url }}">{{ author.name }}</a></li>
+            <li><a href="{{ author.get_absolute_url }}">{{ forloop.counter }}. {{ author.name }} </a></li>
         {% endfor %}
     </ul>
 {% else %}

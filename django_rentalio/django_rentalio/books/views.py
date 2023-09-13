@@ -20,7 +20,9 @@ class BookTitleListView(LoginRequiredMixin, FormView, ListView):
 
     def get_queryset(self):
         parameter = self.kwargs.get('letter') if self.kwargs.get('letter') else 'a'
-        if parameter.isdigit():
+        if parameter == "all":
+            return BookTitle.objects.all().order_by('title')
+        elif parameter.isdigit():
             return BookTitle.objects.filter(title__startswith=parameter)
         else:
             return BookTitle.objects.filter(title__istartswith=parameter)

@@ -14,7 +14,9 @@ class AuthorsListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         parameter = self.kwargs.get('letter') or 'A'
-        if parameter.isdigit():
+        if parameter == "all":
+            return Author.objects.all().order_by('name')
+        elif parameter.isdigit():
             return Author.objects.filter(name__startswith=parameter)
         else:
             return Author.objects.filter(name__istartswith=parameter)

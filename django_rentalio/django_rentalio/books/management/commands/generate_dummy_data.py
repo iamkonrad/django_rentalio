@@ -27,7 +27,7 @@ class Command(BaseCommand):
         for item in publishers_list:
             Publisher.objects.create(**item)
 
-        book_titles_list = ['Fiddler and the Hoof','1985','The Great Escape','Salman']
+        book_titles_list = ['Fiddler and the Hoof','1985','The Great Escape','Salman', 'Beijing Memories']
         publishers = [x.name for x in Publisher.objects.all()]
         items = zip(book_titles_list,publishers)
 
