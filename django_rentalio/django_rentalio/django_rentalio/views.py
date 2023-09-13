@@ -46,7 +46,17 @@ def login_view(request):
 
 def otp_view(request):
     error_message = None
-    form = OTPForm(request.POST or None)
+    otp_secret_key = request.session.get('otp_secret_key')                                                              #just for testing, remove for production
+
+
+    if request.method == 'GET' and otp_secret_key:                                                                      #just for testing,remove for production
+        totp = pyotp.TOTP(otp_secret_key, interval=60)                                                                  #just for testing,remove for production
+        current_otp = totp.now()                                                                                        #just for testing,remove for production
+        form = OTPForm(initial={'otp': current_otp})
+    else:                                                                                                               #just for testing,remove for production
+        form = OTPForm(request.POST or None)
+
+
     if request.method =='POST':
         if form.is_valid():
             otp=form.cleaned_data.get('otp')

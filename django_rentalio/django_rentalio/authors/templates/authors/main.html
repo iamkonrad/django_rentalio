@@ -78,33 +78,33 @@
     </div>
 
 
-    {% include 'components/book list header.html' with title="Find a book by author"  %}
+    {% include 'components/book list header.html' with title="Find a book by author's name"  %}
 
 
 <div class="text-xl text-black dark:text-white">
-    <a href="{% url 'authors:main' 'all' %}" class="{% if 'all' == selected_letter %}underline{% endif %}" style="margin-right: 3px;">All</a>
+    <a href="{% url 'authors:main' 'all' %}" class="{% if 'all' == selected_letter %}underline{% endif %}" style="margin-right: 4px;">All</a>
  |
 
 {% for letter in letters %}
-    <a href="{% url 'authors:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 3px;">{{ letter }}</a>
+    <a href="{% url 'authors:main' letter|lower %}" class="{% if letter == selected_letter|upper %}underline{% endif %}" style="margin-right: 4px;">{{ letter }}</a>
 {% endfor %}
  |
     {% for num in "0123456789" %}
-    <a href="{% url 'authors:main' num %}" class="{% if num == selected_letter %}underline{% endif %}" style="margin-right: 3px;">{{ num }}</a>
+    <a href="{% url 'authors:main' num %}" class="{% if num == selected_letter %}underline{% endif %}" style="margin-right: 4px;">{{ num }}</a>
 {% endfor %}
 </div>
 
-<div class="text-xl text-gray-600 dark:text-white">
+<div class="text-xl text-gray-600 dark:text-white mt-3">
 {% if object_list %}
     <ul>
         {% for author in object_list %}
-            <li><a href="{{ author.get_absolute_url }}">{{ forloop.counter }}. {{ author.name }} </a></li>
+            <li class="mb-1"><a href="{{ author.get_absolute_url }}">{{ forloop.counter }}. {{ author.name }} </a></li>
         {% endfor %}
     </ul>
 {% else %}
     {% if selected_letter %}
         {% if selected_letter == "None" %}
-            <div>Please select a letter corresponding to author's LAST NAME  to display the titles associated with it.</div>
+            <div>Please select a letter corresponding to author's name to display the titles associated with it.</div>
         {% elif selected_letter.isdigit %}
             <div>No books written by authors starting with the number <b>{{selected_letter}}</b></div>
         {% else %}
@@ -115,7 +115,7 @@
     {% endif %}
 {% endif %}
 </div>
-    <div style="position: absolute; left: 52%;top: 48%; transform: translateX(-50%); width: 48%; text-align: center;height: 20%;">
+    <div style="position: absolute; left: 55%;top: 48%; transform: translateX(-50%); width: 48%; text-align: center;height: 20%;">
     <img src="{% static 'images/mainauthor1.png' %}" alt="Homepage photo">
 </div>
 

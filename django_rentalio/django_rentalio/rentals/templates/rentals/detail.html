@@ -22,8 +22,8 @@ rental history
 {%  if object %}
     {% if object_list %}
                  <div class="overflow-x-auto">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+            <table class="w-full text-md text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-md text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                     <tr class="border">
                         <th scope="col" class="py-3 px-6">
                             #
@@ -57,7 +57,8 @@ rental history
                 </thead>
                 <tbody>
                     {% for obj in object_list %}
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="border-b dark:bg-gray-800 dark:border-gray-700 {% if not obj.is_read  %}font-bold{% endif %}">
+
                         <td scope="row" class="py-4 px-6 font-medium text-gray-900 dark:text-white">
                             {{forloop.counter}}
                         </td>
