@@ -19,6 +19,7 @@ class AuthorsListView(LoginRequiredMixin, ListView):
         else:
             return Author.objects.filter(name__istartswith=parameter)
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         letters = list(string.ascii_uppercase)

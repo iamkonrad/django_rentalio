@@ -3,7 +3,7 @@
     <div class="flex-col"></div>
     <div class="text-1xl">Book:{{object.book.title.title}}</div>
     <div class="text-3xl">{{title}}</div>
-    <div class="text-md">Author:{{object.book.title.author}}</div>
+    <div class="text-md">Author: {{ object.book.title.author.formatted_name }}</div>
 
         <div>
            {% if is_form_available %}

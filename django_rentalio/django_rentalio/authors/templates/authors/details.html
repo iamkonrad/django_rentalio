@@ -14,7 +14,7 @@
         {% endfor %}
     {% endif %}
 
-{% include 'components/author header.html' with author=author.name birth_year=author.birth_year is_go_back=True %}
+{% include 'components/author header.html' with author=author.formatted_name birth_year=author.birth_year is_go_back=True %}
 
 
     <div class="overflow-x-auto pt-">

@@ -15,7 +15,7 @@ rental history
         {% endfor %}
 {% endif %}
 
-        {% include 'components/header.html' with title=object.title.title description=object.title.publisher.name author=object.title.author.name is_go_back=True %}
+        {% include 'components/header.html' with title=object.title.title description=object.title.publisher.name author=object.title.author.formatted_name is_go_back=True %}
 
 
 

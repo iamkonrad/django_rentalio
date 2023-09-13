@@ -8,7 +8,7 @@
     {% block title %}book detail{% endblock title %}
     {% block content %}
 
-        {% include 'components/header.html' with title=object.title.title description=object.title.publisher.name author=object.title.author.name is_go_back=True %}
+        {% include 'components/header.html' with title=object.title.title description=object.title.publisher.name author=object.title.author.formatted_name is_go_back=True %}
 
 
 
@@ -30,7 +30,7 @@
         <img src="{{object.qr_code.url}}" alt="{{object.isbn}}" class="w-52 h-52 rounded-lg">
             <div class="mt-7 text-center">
                 {%  if not object.is_available %}
-                    <a href="{% url 'rentals:update' object.id object.rental_id %}" class="bg-yellow-500 hover:bg-yellow-600 text-white dark:text-slate-900 rounded p-3">Change sSatus</a>
+                    <a href="{% url 'rentals:update' object.id object.rental_id %}" class="bg-yellow-500 hover:bg-yellow-600 text-white dark:text-slate-900 rounded p-3">Change Status</a>
                 {% endif %}
 
                     <a href="{% url 'rentals:detail' object.id %}" class="bg-rose-500 hover:bg-rose-600 rounded p-3 text-white">Order History</a>
