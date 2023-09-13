@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def handle(self,*args,**kwargs):
 
-        authors_list=['Joh Quincy','Michael Wards', 'Ronald Richards','Anna Wang']
+        authors_list=['Quincy John','Wards Michael', 'Richards Ronald','Wang Anna']
         for name in authors_list:
             Author.objects.create(name=name)
 

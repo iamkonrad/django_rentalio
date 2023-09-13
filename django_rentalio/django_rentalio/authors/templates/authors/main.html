@@ -102,7 +102,7 @@
 {% else %}
     {% if selected_letter %}
         {% if selected_letter == "None" %}
-            <div>Please select a letter or a number in order to display the titles associated with it.</div>
+            <div>Please select a letter corresponding to author's LAST NAME  to display the titles associated with it.</div>
         {% elif selected_letter.isdigit %}
             <div>No books written by authors starting with the number <b>{{selected_letter}}</b></div>
         {% else %}
