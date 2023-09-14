@@ -11,15 +11,8 @@ Homepage
 {% endblock title %}
 
 {%  block content%}
-<div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-xl mb-10 h-[80px] flex justify-center items-center px-6" id="head">
- <label for="{{ form.search.id_for_label }}" class="text-3xl text-white-600 dark:text-white">
-        Welcome to RENTALio: {{ user.username }}
-</label>
-</div>
-
-
 <p class="text-xl" style="line-height: 1.6; background-color: #f8f9fa; padding: 15px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    As of
+    Welcome to RENTALio . Home to the best rentals. <br> As of
     <span id="current-time" style="font-style: normal; color: #007BFF; font-weight: bold;"></span>
     <span style="color: black; font-weight: normal;">we have:</span>
     <span style="font-weight: bold; color: #007BFF; margin: 0 5px;">{{ book_titles_count }}</span>
@@ -29,6 +22,8 @@ Homepage
     <span style="font-weight: bold; color: #007BFF;">{{ book_copies_count }}</span>
     <span style="color: black; font-weight: normal;">book copies and still growing!</span>
 </p>
+
+
 
 
 <div style="position: absolute; left: 48%; top: 53%; transform: translate(-50%, -50%); text-align: center; z-index: 2;">

@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 import string
-from django.views.generic import FormView, ListView, DetailView
+from django.views.generic import  ListView, DetailView
 from books.models import BookTitle, Book
 from authors.models import Author
 from urllib.parse import unquote
