@@ -62,7 +62,17 @@ class BookDetailView(LoginRequiredMixin,DetailView):
     model=Book
     template_name = 'books/detail_book.html'
 
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
 
+        slug = self.kwargs.get('slug')
+        book_id = self.kwargs.get('book_id')
+        book_title = get_object_or_404(BookTitle, slug=slug)
+
+        obj = get_object_or_404(Book, id=book_id, title=book_title)
+
+        return obj
 
 class BookDeleteView(LoginRequiredMixin,DeleteView):
     model=Book

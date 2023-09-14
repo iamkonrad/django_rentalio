@@ -33,6 +33,7 @@ urlpatterns = [
     path('books/',include('books.urls',namespace='books')),
     path('authors/', include('authors.urls', namespace='authors')),
     path('rentals/', include('rentals.urls', namespace='rentals')),
+    path('publishers/', include('publishers.urls', namespace='publishers')),
     path("__reload__/", include("django_browser_reload.urls")),
 
 ]

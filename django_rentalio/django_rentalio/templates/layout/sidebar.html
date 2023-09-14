@@ -4,6 +4,8 @@
     {% url 'books:main' letter='None' as path_to_books %}
     {% url 'rentals:main'  as path_to_rentals %}
     {% url 'authors:main' letter='None' as path_to_authors %}
+    {% url 'publishers:main' letter='None' as path_to_publishers %}
+
 
 
 
@@ -14,6 +16,12 @@
                 <i class="fa-solid fa-house fa-xl"></i>
                 <p>Home</p>
             </a>
+                    <li class="mb-6 mx-auto">
+            <a href="{{path_to_authors}}" class="grid h-12 place-items-center cursor-pointer hover:text-slate-200 duration-300 text-slate-500 {% if 'authors' == request.resolver_match.view_name|slice:'0:7' %}text-white{% endif %}">
+                <i class="fa-solid fa-pen fa-xl"></i>
+                <p>Authors</p>
+            </a>
+        </li>
         </li>
           <li class="mb-6 mx-auto">
             <a href="{{path_to_books}}" class="grid h-12 place-items-center cursor-pointer hover:text-slate-200 duration-300 text-slate-500 {% if 'books' == request.resolver_match.view_name|slice:'0:5' %}text-white{% endif %}">
@@ -21,16 +29,16 @@
                 <p>Books</p>
             </a>
         </li>
+            <li class="mb-6 mx-auto">
+            <a href="{{path_to_publishers}}" class="grid h-12 place-items-center cursor-pointer hover:text-slate-200 duration-300 text-slate-500 {% if 'publishers' in request.resolver_match.view_name %}text-white{% endif %}">
+                <i class="fa-solid fa-print fa-xl"></i>
+                <p>Publishers</p>
+            </a>
+        </li>
         <li class="mb-6 mx-auto">
             <a href="{{path_to_rentals}}" class="grid h-12 place-items-center cursor-pointer hover:text-slate-200 duration-300 text-slate-500 {% if 'rentals' == request.resolver_match.view_name|slice:'0:7' %}text-white{% endif %}">
                 <i class="fa-solid fa-bookmark fa-xl"></i>
                 <p>Rental Status</p>
-            </a>
-        </li>
-            <li class="mb-6 mx-auto">
-            <a href="{{path_to_authors}}" class="grid h-12 place-items-center cursor-pointer hover:text-slate-200 duration-300 text-slate-500 {% if 'authors' == request.resolver_match.view_name|slice:'0:7' %}text-white{% endif %}">
-                <i class="fa-solid fa-pen fa-xl"></i>
-                <p>Authors</p>
             </a>
         </li>
            <li class="mb-6 mx-auto">
