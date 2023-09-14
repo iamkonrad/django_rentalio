@@ -51,27 +51,28 @@ class BookTitleDetailView(LoginRequiredMixin,DetailView):
     model = BookTitle
     template_name = 'books/detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['letter'] = self.kwargs.get('letter')
+        context['slug'] = self.kwargs.get('slug')
+        return context
+
 
 class BookDetailView(LoginRequiredMixin,DetailView):
     model=Book
     template_name = 'books/detail_book.html'
 
-    def get_object(self):
-        id = self.kwargs.get('book_id')
-        obj=get_object_or_404(Book,id=id)
-        return obj
+
 
 class BookDeleteView(LoginRequiredMixin,DeleteView):
     model=Book
     template_name = 'books/confirm_delete.html'
 
-    def get_object(self):
+    def get_object(self,queryset=None):
         id = self.kwargs.get('book_id')
-        obj = get_object_or_404(Book, ISBN=id)
+        obj = get_object_or_404(Book, id=id)
         return obj
 
     def get_success_url(self):
-        messages.add_message(self.request,messages.INFO,f"The book with isbn{self.get_object().ISBN} has been removed.")
-        letter=self.kwargs.get('letter')
-        slug=self.kwargs.get('slug')
-        return reverse('books:detail',kwargs={'letter':letter,'slug':slug})
+        messages.add_message(self.request,messages.INFO,f"The book with id{self.get_object().id} has been removed.")
+        return reverse('books:main')
