@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def handle(self,*args,**kwargs):
 
-        authors_list=['Quincy John','Wards Michael', 'Richards Ronald','Wang Anna']
+        authors_list=['Quincy John','Wards Michael', 'Richards Ronald','Wang Anna', 'Kluchov Igor']
         for name in authors_list:
             Author.objects.create(name=name)
 
@@ -22,6 +22,8 @@ class Command(BaseCommand):
             {'name': 'Bookera', 'country':Country(code='fr')},
             {'name': 'Bookzy', 'country':Country(code='de')},
             {'name': 'Publio', 'country':Country(code='us')},
+            {'name': 'Publik', 'country': Country(code='ukr')},
+
         ]
 
         for item in publishers_list:
@@ -48,6 +50,8 @@ class Command(BaseCommand):
             {'first_name': 'Michael', 'last_name': 'Bird'},
             {'first_name': 'Maria', 'last_name': 'Berry'},
             {'first_name': 'Johan', 'last_name': 'Kreuz'},
+            {'first_name': 'Joanna', 'last_name': 'Kalinov'},
+
         ]
 
         for item in customers_list:

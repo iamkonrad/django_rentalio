@@ -46,5 +46,4 @@ class PublishersDetailView(LoginRequiredMixin,DetailView):
         context=super().get_context_data(**kwargs)
         context['book_titles']=BookTitle.objects.filter(publisher=self.object)
         context['books'] = Book.objects.filter(title__publisher=self.object)
-        context['authors'] = Author.objects.filter(authors_in=self.object)
         return context

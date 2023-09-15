@@ -1,4 +1,6 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.views import View
+
 from .models import BookTitle, Book
 from django.views.generic import ListView, FormView, DetailView, DeleteView
 from .forms import BookTitleForm
@@ -86,3 +88,15 @@ class BookDeleteView(LoginRequiredMixin,DeleteView):
     def get_success_url(self):
         messages.add_message(self.request,messages.INFO,f"The book with id{self.get_object().id} has been removed.")
         return reverse('books:main')
+
+
+class BookDeleteISBNView(View):
+    def post(self, request, *args, **kwargs):
+        isbn = self.kwargs.get('ISBN')
+        books = Book.objects.filter(ISBN=isbn)                                                                          #filter based on ISBN
+        books.delete()
+        messages.add_message(request, messages.INFO, f"The books with ISBN {isbn} have been removed.")
+        return redirect('books:main')
+
+    def get(self, request, *args, **kwargs):
+        return redirect('books:main')

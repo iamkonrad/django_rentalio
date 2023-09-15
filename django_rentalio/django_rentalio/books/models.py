@@ -69,6 +69,9 @@ class Book(models.Model):
         letter = self.title.title[:1].lower()
         return reverse('books:delete-book',kwargs={'letter':letter,'slug':self.title.slug,"book_id": self.id})
 
+    def delete_by_isbn(self):
+        return reverse ('books:delete-book-by-isbn',kwargs={'ISBN':self.ISBN})
+
 
     def __str__(self):
         return str(self.title)
