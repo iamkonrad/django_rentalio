@@ -26,6 +26,7 @@ class BookTitle(models.Model):
         choices=GENRE_CHOICES,
         default='DRA',
     )
+
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
@@ -56,6 +57,9 @@ class Book(models.Model):
     qr_code=models.ImageField(upload_to='qr_codes',blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+    publication_time = models.PositiveIntegerField(null=True, blank=True)
+    publication_place = models.CharField(max_length=255, null=True, blank=True)
+    edition= models.CharField(max_length=100, null=True, blank=True)
 
     def get_absolute_url(self):
         letter = self.title.title[:1].lower()

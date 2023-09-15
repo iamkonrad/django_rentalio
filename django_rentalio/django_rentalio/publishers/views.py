@@ -2,7 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 
-from books.models import BookTitle
+from books.models import BookTitle, Book
+from authors.models import Author
 from publishers.models import Publisher
 import string
 from urllib.parse import unquote
@@ -44,5 +45,6 @@ class PublishersDetailView(LoginRequiredMixin,DetailView):
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
         context['book_titles']=BookTitle.objects.filter(publisher=self.object)
-
+        context['books'] = Book.objects.filter(title__publisher=self.object)
+        context['authors'] = Author.objects.filter(authors_in=self.object)
         return context

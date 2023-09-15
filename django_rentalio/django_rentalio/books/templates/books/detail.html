@@ -46,8 +46,11 @@
                     <th scope="col" class="py-3 px-6">
                         select
                     </th>
-                    <th scope="col" class="py-3 px-6">
-                        delete
+                        <th scope="col" class="py-3 px-1">
+                        delete title
+                    </th>
+                    <th scope="col" class="py-3 px-1">
+                        delete book
                     </th>
                 </tr>
             </thead>
@@ -79,8 +82,11 @@
                             <i class="fa-solid fa-xmark text-red-500" style="margin-left: 20px;"></i>
                         {% endif %}
                     </td>
-                    <td class="py-4 px-6">
+                    <td class="py-1 px-6">
                         {% include 'components/buttons/select_button.html' with href=obj.get_absolute_url %}
+                    </td>
+                           <td class="py-1 px-6">
+                        {% include 'components/buttons/delete_a_title_button.html' with href=obj.delete_title%}
 
                     </td>
                     <td class="py-4 px-6">
