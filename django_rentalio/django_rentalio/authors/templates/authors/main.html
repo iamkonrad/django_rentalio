@@ -8,7 +8,7 @@
 
 {% endblock scripts %}
 
-{% block title %}book title list{% endblock title %}
+{% block title %}Authors{% endblock title %}
 
 {% block content %}
 
@@ -24,7 +24,8 @@
 
 
 
-    {% include 'components/book list header.html' with title="Find a book by author's name"  %}
+    {% include 'components/book list header.html' with title="Find a book by author"  %}
+
 
 
 <div class="text-xl text-black dark:text-white">
@@ -64,6 +65,7 @@
     <div style="position: absolute; left: 60%;top: 48%; transform: translateX(-50%); width: 48%; text-align: center;height: 20%;">
     <img src="{% static 'images/mainauthor1.png' %}" alt="Homepage photo">
 </div>
+
 
 
 {% endblock content %}

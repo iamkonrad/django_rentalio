@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'basehomepage.html' %}
 {% load static %}
 
 {% block scripts %}
@@ -11,8 +11,9 @@ Homepage
 {% endblock title %}
 
 {%  block content%}
-<p class="text-xl" style="line-height: 1.6; background-color: #f8f9fa; padding: 15px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    Welcome to RENTALio . Home to the best rentals. <br> As of
+<p class="text-2xl" style="line-height: 1.6; background-color: #f8f9fa; padding: 15px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <span style="color: black; font-weight: normal;">Welcome to RENTALio . Home to the best rentals. <br></span>
+    <span style="color: black; font-weight: normal;">As of</span>
     <span id="current-time" style="font-style: normal; color: #007BFF; font-weight: bold;"></span>
     <span style="color: black; font-weight: normal;">we have:</span>
     <span style="font-weight: bold; color: #007BFF; margin: 0 5px;">{{ book_titles_count }}</span>
@@ -22,7 +23,6 @@ Homepage
     <span style="font-weight: bold; color: #007BFF;">{{ book_copies_count }}</span>
     <span style="color: black; font-weight: normal;">book copies and still growing!</span>
 </p>
-
 
 
 

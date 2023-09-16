@@ -1,7 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.db.models import Q
+from django.shortcuts import get_object_or_404, redirect
 import string
 from django.views.generic import  ListView, DetailView
+from django.shortcuts import render
+from .forms import SearchAuthorForm
 from books.models import BookTitle, Book
 from authors.models import Author
 from urllib.parse import unquote
@@ -30,6 +33,7 @@ class AuthorsListView(LoginRequiredMixin, ListView):
         context['letters'] = letters
         context['numbers'] = numbers
         context['selected_letter'] = self.kwargs.get('letter')
+        context['form'] = SearchAuthorForm()
         return context
 
 
@@ -49,3 +53,25 @@ class AuthorDetailView(LoginRequiredMixin, DetailView):
         context['book_titles'] = BookTitle.objects.filter(author=self.object)
         context['books'] = Book.objects.filter(title__author=self.object)
         return context
+
+
+def search_authors_view(request):
+    form=SearchAuthorForm(request.GET or None)
+    search_query=request.GET.get('search','').strip()
+
+    if search_query:
+        book_ex=Book.objects.filter(
+            Q(author__name__icontains=search_query)
+        ).exists()
+
+        if book_ex:
+            book=Book.objects.filter(
+                Q(author__name__icontains=search_query)
+            ).first()
+            return redirect('authors:details', name=book.author.name)
+
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'authors/main.html', context)
