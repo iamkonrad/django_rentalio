@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 from .views import change_theme, chart_data, login_view, otp_view, logout_view, AboutView, HomeView,StatsView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('nadmin1/', admin.site.urls),
     path('',HomeView.as_view(),name='home'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
