@@ -12,10 +12,10 @@ This app's main purpose is not to daze with sophistication or design, but provid
 
 
 ## Some of the key functionalities:
--CRUD functionality for book app
--Multiple different apps, such as authors,publishers, rentals allowing for adding all the necessary data into the db
--Automatic "qr code" generation
--Honeypot and session timeout for better security
--One-time password generation
--Favicon and jdicon for pleasant visual experience and additional layer of user authentication
--Multiple visual elements created/reupdated in Canva
+- CRUD functionality for book app
+- Multiple different apps, such as authors,publishers, rentals allowing for adding all the necessary data into the db
+- Automatic "qr code" generation
+- Honeypot and session timeout for better security
+- One-time password generation
+- Favicon and jdicon for pleasant visual experience and additional layer of user authentication
+- Multiple visual elements created/reupdated in Canva
