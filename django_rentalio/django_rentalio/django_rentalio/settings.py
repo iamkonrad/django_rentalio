@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'theme',
     'django_browser_reload',
     'widget_tweaks',
-
     'admin_honeypot',
 
 ]

@@ -1,19 +1,21 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 import string
-from django.views.generic import  ListView, DetailView
-from django.shortcuts import render
-from .forms import SearchAuthorForm
+from django.views.generic import ListView, DetailView, FormView
+from .forms import AuthorForm
 from books.models import BookTitle, Book
 from authors.models import Author
 from urllib.parse import unquote
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
-class AuthorsListView(LoginRequiredMixin, ListView):
+
+class AuthorsListView(LoginRequiredMixin, FormView, ListView):
     model = Author
     template_name = 'authors/main.html'
+    form_class = AuthorForm
+    i_instance = None
 
     def get_queryset(self):
         parameter = self.kwargs.get('letter') or 'A'
@@ -24,7 +26,6 @@ class AuthorsListView(LoginRequiredMixin, ListView):
         else:
             return Author.objects.filter(name__istartswith=parameter)
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         letters = list(string.ascii_uppercase)
@@ -33,10 +34,20 @@ class AuthorsListView(LoginRequiredMixin, ListView):
         context['letters'] = letters
         context['numbers'] = numbers
         context['selected_letter'] = self.kwargs.get('letter')
-        context['form'] = SearchAuthorForm()
         return context
 
+    def form_valid(self, form):
+        self.i_instance = form.save()
+        messages.add_message(self.request, messages.INFO, f"Book title: {self.i_instance.name} has been created.")
+        return super().form_valid(form)
 
+    def form_invalid(self, form):
+        self.object_list = self.get_queryset()
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)
+
+    def get_success_url(self):
+        return self.request.path
 
 class AuthorDetailView(LoginRequiredMixin, DetailView):
     model = Author
@@ -53,25 +64,3 @@ class AuthorDetailView(LoginRequiredMixin, DetailView):
         context['book_titles'] = BookTitle.objects.filter(author=self.object)
         context['books'] = Book.objects.filter(title__author=self.object)
         return context
-
-
-def search_authors_view(request):
-    form=SearchAuthorForm(request.GET or None)
-    search_query=request.GET.get('search','').strip()
-
-    if search_query:
-        book_ex=Book.objects.filter(
-            Q(author__name__icontains=search_query)
-        ).exists()
-
-        if book_ex:
-            book=Book.objects.filter(
-                Q(author__name__icontains=search_query)
-            ).first()
-            return redirect('authors:details', name=book.author.name)
-
-
-    context = {
-        'form': form,
-    }
-    return render(request, 'authors/main.html', context)
