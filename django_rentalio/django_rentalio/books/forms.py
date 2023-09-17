@@ -26,5 +26,3 @@ class BookTitleForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['author'].queryset = Author.objects.all()
         self.fields['author'].label_from_instance = lambda obj: obj.formatted_name
-
-

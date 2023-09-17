@@ -14,7 +14,7 @@ class PublisherForm(forms.ModelForm):
         name = self.cleaned_data.get('name')
 
         if len(name) < 1:
-            error_msg = 'Sorry, but the title is too short.'
+            error_msg = 'Sorry, but this name is too short.'
             self.add_error('name', error_msg)
 
         author_name_exists = Publisher.objects.filter(name__iexact=name).exists()
