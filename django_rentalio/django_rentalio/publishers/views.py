@@ -1,18 +1,20 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, DetailView
-
+from django.views.generic import ListView, DetailView, FormView
 from books.models import BookTitle, Book
-from authors.models import Author
 from publishers.models import Publisher
 import string
 from urllib.parse import unquote
+from .forms import PublisherForm
+from django.contrib import messages
 
 
 
 
-class PublishersListView(LoginRequiredMixin, ListView):
+class PublishersListView(LoginRequiredMixin, FormView,ListView):
     template_name = 'publishers/main.html'
+    form_class = PublisherForm
+    i_instance = None
 
     def get_queryset(self):
         parameter = self.kwargs.get('letter') or 'A'
@@ -32,6 +34,19 @@ class PublishersListView(LoginRequiredMixin, ListView):
         context['numbers'] = numbers
         context['selected_letter'] = self.kwargs.get('letter')
         return context
+
+    def form_valid(self, form):
+        self.i_instance = form.save()
+        messages.add_message(self.request, messages.INFO, f"Publisher: {self.i_instance.name} has been added.")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        self.object_list = self.get_queryset()
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)
+
+    def get_success_url(self):
+        return self.request.path
 
 class PublishersDetailView(LoginRequiredMixin,DetailView):
     model = Publisher

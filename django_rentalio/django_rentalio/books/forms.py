@@ -1,7 +1,6 @@
 from django import forms
 from authors.models import Author
 from .models import BookTitle
-from django.core.exceptions import ValidationError
 
 
 class BookTitleForm(forms.ModelForm):

@@ -1,5 +1,4 @@
 from django.urls import path
-
 from authors.views import AuthorsListView, AuthorDetailView
 
 app_name='authors'

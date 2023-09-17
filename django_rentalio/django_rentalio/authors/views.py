@@ -38,7 +38,7 @@ class AuthorsListView(LoginRequiredMixin, FormView, ListView):
 
     def form_valid(self, form):
         self.i_instance = form.save()
-        messages.add_message(self.request, messages.INFO, f"Book title: {self.i_instance.name} has been created.")
+        messages.add_message(self.request, messages.INFO, f"Author: {self.i_instance.name} has been added to the db.")
         return super().form_valid(form)
 
     def form_invalid(self, form):

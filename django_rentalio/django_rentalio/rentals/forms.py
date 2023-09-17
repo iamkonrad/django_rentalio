@@ -1,5 +1,4 @@
 from django import forms
-
 from rentals.choices import FORMAT_CHOICES
 
 
