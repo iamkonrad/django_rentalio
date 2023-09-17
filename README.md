@@ -1,8 +1,11 @@
 # django_rentalio (django,html,css)
-A minor yet practical app that can be used to manage rental systems.  
+A relatively simple, yet practical app that can be used to manage rental systems.  
 
 
-https://github.com/iamkonrad/django_rentalio/assets/133384502/85d221f5-27d9-4664-ab39-2e1d8ff51c53
+
+
+https://github.com/iamkonrad/django_rentalio/assets/133384502/7661fade-d76b-4ed7-82a5-7a1cc58bbfe8
+
 
 
 
