@@ -20,4 +20,5 @@ This app's main purpose is not to daze with sophistication or design, but provid
 - Favicon and jdicon for pleasant visual experience and additional layer of user authentication
 - Multiple visual elements created/updated in Canva
 - Chart.js generated charts
+- Downloadable data regarding rental status in csv, xls and json formats
 - Utilizes Tailwind CSS to give the app a modern and elegant look
