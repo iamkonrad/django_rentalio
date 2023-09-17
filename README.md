@@ -18,4 +18,6 @@ This app's main purpose is not to daze with sophistication or design, but provid
 - Honeypot and session timeout for better security
 - One-time password generation
 - Favicon and jdicon for pleasant visual experience and additional layer of user authentication
-- Multiple visual elements created/reupdated in Canva
+- Multiple visual elements created/updated in Canva
+- Chart.js generated charts
+- Utilizes Tailwind CSS to give the app a modern and elegant look
