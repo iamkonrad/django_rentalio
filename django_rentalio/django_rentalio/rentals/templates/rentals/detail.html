@@ -30,7 +30,7 @@ Rental history
                             #
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            customer
+                            User
                         </th>
                         <th scope="col" class="py-3 px-6">
                             book id
@@ -48,10 +48,10 @@ Rental history
                             end
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            return
+                            resolved
                         </th>
-                        <th scope="col" class="py-3 px-6">
-                            is closed
+                              <th scope="col" class="py-3 px-25">
+                            update status
                         </th>
 
                     </tr>
@@ -82,15 +82,15 @@ Rental history
                             {{obj.rent_start_date}}
                         </td>
                         <td class="py-4 px-6">
-                            {% if obj.return_date %}{{obj.return_date}}{% else %}-{% endif %}
-                        </td>
-                        <td class="py-4 px-6">
                             {% if obj.is_closed %}
                                 <i class="fa-solid fa-check fa-lg text-teal-300" style="margin-left: 20px;"></i>
                             {% else %}
                                 <i class="fa-solid fa-xmark fa-lg text-red-500" style="margin-left: 20px;"></i>
                             {% endif %}
                         </td>
+                                <td class="py-6 px-6">
+                        {% include 'components/buttons/select_button.html' with href=obj.get_absolute_url  %}
+                    </td>
                     </tr>
                     {% endfor %}
                 </tbody>

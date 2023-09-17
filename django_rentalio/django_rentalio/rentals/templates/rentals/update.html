@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load static %}
+
 
 {% block title %}
 Update status
@@ -18,7 +20,12 @@ Update status
 {% include 'components/update_rental header.html' with title="Update rental status" description=object.book.id is_go_back=True %}
 
 {% if object.is_closed %}
-    The rental status is closed
+            <p style="font-family:  sans-serif; font-size: 1.2em; font-weight: bold; color: #333;">
+                This rental has been closed.
+    </p>
+              <div style="position: absolute; left: 50%;top: 47%; transform: translateX(-50%); width: 45%; text-align: center;">
+        <img src="{% static 'images/detailrentals1.png' %}" alt="Not found photo">
+    </div>
 {% else %}
     <form method="POST" class="w-1/2">
         {% csrf_token %}

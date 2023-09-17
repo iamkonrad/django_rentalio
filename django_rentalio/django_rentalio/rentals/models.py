@@ -2,7 +2,9 @@ from django.db import models
 from books.models import Book
 from customers.models import Customer
 from datetime import timedelta
+from django.urls import reverse
 from .choices import STATUS_CHOICES
+
 class Rental(models.Model):
     #FK
     book = models.ForeignKey(Book,on_delete=models.CASCADE)
@@ -21,7 +23,8 @@ class Rental(models.Model):
     def __str__(self):
         return f"{self.book.ISBN} rented by{self.customer.username}"
 
-
+    def get_absolute_url(self):
+        return reverse('rentals:update', args=[str(self.book.id), str(self.id)])
 
     @property
     def status_text(self):

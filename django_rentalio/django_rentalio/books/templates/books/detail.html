@@ -46,10 +46,10 @@
                     <th scope="col" class="py-3 px-6">
                         select
                     </th>
-                        <th scope="col" class="py-3 px-1">
+                        <th scope="col" class="py-3 px-6">
                         delete title
                     </th>
-                    <th scope="col" class="py-3 px-1">
+                    <th scope="col" class="py-3 px-6">
                         delete book
                     </th>
                 </tr>
@@ -73,7 +73,7 @@
                         <img src="{{obj.qr_code.url}}" alt="{{obj.ISBN}}" class="h-12 w-12 rounded">
                     </td>
                     <td class="py-4 px-6">
-                        {% if obj.status %}{{obj.status}}{% else %}never rented out{% endif %}
+                        {% if obj.status %}{{obj.status}}{% else %}Never rented out{% endif %}
                     </td>
                     <td class="py-4 px-6">
                         {% if obj.is_available %}
@@ -85,10 +85,10 @@
                     <td class="py-1 px-6">
                         {% include 'components/buttons/select_button.html' with href=obj.get_absolute_url %}
                     </td>
-                           <td class="py-1 px-6">
+                           <td class="py-1 px-12">
                         {% include 'components/buttons/delete_a_title_button.html' with href=obj.delete_by_isbn%}
                     </td>
-                    <td class="py-4 px-6">
+                    <td class="py-4 px-12">
                         {% include 'components/buttons/delete_button.html' with href=obj.delete_objects%}
                     </td>
                 </tr>

@@ -70,10 +70,10 @@
                         {{book.publication_place}}
                     </th>
                     <td class="py-4 px-6">
-
+                          {{book.edition}}
                     </td>
                     <td class="py-4 px-6">
-                        {% include 'components/buttons/select_button.html' with href=book.get_absolute_url %}
+                        {% include 'components/buttons/select_button.html' with href=book.get_absolute_url%}
 
                 </tr>
                 {% endfor %}
