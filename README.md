@@ -1,5 +1,12 @@
 # django_rentalio (django,html,css)
-This app's main purpose is not to daze with sophistication or design, but provide a a solid and fuss-free management system that can be adapted for various uses. 
+A relatively simple, yet practical app that can be used to manage rental systems.  
+
+
+
+
+https://github.com/iamkonrad/django_rentalio/assets/133384502/7661fade-d76b-4ed7-82a5-7a1cc58bbfe8
+
+
 
 
 
